@@ -1,3 +1,25 @@
+```
+For each question, your answer adds points to either the extrovert (E) or introvert (I) bucket:
+
+Option A (social/outward) → +2 to E, +0 to I
+Option B (solo/inward) → +0 to E, +2 to I
+
+After 5 questions, the max possible is 10 points total (e.g. 10E + 0I, or 6E + 4I, etc).
+Then:
+
+Extrovert % = E points ÷ total × 100
+Introvert % = 100 − extrovert %
+Ambivert % = how close you are to 50/50 — calculated as 100 − |extrovert% − 50| × 2, so it peaks at 100% if you're perfectly balanced and drops toward 0% the more you lean either way
+
+And the final result label is decided by:
+
+Extrovert % ≥ 70 → Extrovert
+Extrovert % ≤ 30 → Introvert
+Anything in between → Ambivert
+
+So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=10 → 60% extrovert, 40% introvert, 80% ambivert → result is Ambivert.
+```
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
