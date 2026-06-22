@@ -29,7 +29,10 @@ So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    .dots-row { display: flex; justify-content: center; gap: 8px; margin-top: 10px; margin-bottom: 1.5rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #e5e5e5; transition: background 0.3s ease, transform 0.3s ease; }
+    .dot.done { background: #AFA9EC; }
+    .dot.active { background: #7F77DD; transform: scale(1.3); }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #f5f4f0;
@@ -155,7 +158,7 @@ So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=
     <div class="quiz-wrap">
       <div class="progress-row">
         <div class="progress-bg"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
-        <div class="progress-label" id="prog-label">1 / 5</div>
+        <div class="dots-row" id="q-dots"></div>
       </div>
       <div class="q-text" id="q-text"></div>
       <div id="q-options"></div>
@@ -224,7 +227,13 @@ So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=
   function renderQ() {
     const q = questions[current];
     document.getElementById('prog-fill').style.width = (current / questions.length * 100) + '%';
-    document.getElementById('prog-label').textContent = (current+1) + ' / ' + questions.length;
+    const dots = document.getElementById('q-dots');
+    dots.innerHTML = '';
+    for (let i = 0; i < questions.length; i++) {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i < current ? ' done' : i === current ? ' active' : '');
+      dots.appendChild(d);
+}
     document.getElementById('q-text').textContent = q.text;
     const prevIdx = history[current];
     document.getElementById('q-options').innerHTML = q.options.map((o,i) =>
