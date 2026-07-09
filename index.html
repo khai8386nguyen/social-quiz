@@ -84,13 +84,13 @@ So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=
     .dot.active { background: #7F77DD; transform: scale(1.3); }
 
     .q-title { font-size: 12px; font-weight: 600; color: #7F77DD; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
-    .q-text { font-size: 18px; font-weight: 500; color: #111; margin-bottom: 1.25rem; line-height: 1.45; }
+    .q-text { font-size: 15px; font-weight: 500; color: #111; margin-bottom: 1.25rem; line-height: 1.45; }
 
     .opt {
       display: flex; align-items: flex-start; gap: 12px;
-      width: 100%; padding: 0.875rem 1.125rem; margin-bottom: 0.75rem;
+      width: 100%; padding: 0.625rem 0.875rem; margin-bottom: 0.6rem;
       border-radius: 12px; border: 0.5px solid #ddd;
-      background: #fff; color: #222; font-size: 15px;
+      background: #fff; color: #222; font-size: 13px;
       cursor: pointer; text-align: left; line-height: 1.4;
       transition: border-color 0.15s, background 0.15s;
       font-family: inherit;
@@ -157,8 +157,8 @@ So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=
       body { padding: 0; justify-content: flex-start; }
       .site { max-width: 100%; border-radius: 0; border-left: none; border-right: none; min-height: 100vh; }
       .screen { padding: 2rem 1.25rem; }
-      .q-text { font-size: 16px; }
-      .opt { font-size: 14px; padding: 0.8rem 1rem; }
+      .q-text { font-size: 14px; }
+      .opt { font-size: 13px; padding: 0.6rem 0.8rem; }
       .result-type { font-size: 22px; }
       .action-row { flex-direction: column; }
     }
@@ -246,10 +246,10 @@ So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=
       title: "Q3 — The Backpack",
       text: "As you start walking, a tiny rabbit hands you a backpack. You can only bring ONE thing. Which do you pick?",
       options: [
-        { text: "📒 Notebook → 🦫", e:0, i:2 },
-        { text: "🍪 Snacks → 🦥", e:0, i:2 },
-        { text: "🔦 Flashlight → 🐉", e:2, i:0 },
-        { text: "🎲 Mystery Box → 🐝", e:2, i:0 }
+        { text: "📒 Notebook", e:0, i:2 },
+        { text: "🍪 Snacks", e:0, i:2 },
+        { text: "🔦 Flashlight", e:2, i:0 },
+        { text: "🎲 Mystery Box", e:2, i:0 }
       ]
     },
     {
@@ -370,11 +370,11 @@ So for example if you pick 3 social answers and 2 solo answers: E=6, I=4, total=
     const key = ePct >= 70 ? 'extrovert' : ePct <= 30 ? 'introvert' : 'ambivert';
     const r = resultData[key];
 
-    document.getElementById('result-badge').textContent = r.label;
+    document.getElementById('result-badge').textContent = "<placeholder result page>";
     document.getElementById('result-badge').style.background = r.badgeBg;
     document.getElementById('result-badge').style.color = r.badgeColor;
-    document.getElementById('result-type').textContent = "You're an " + r.label.toLowerCase();
-    document.getElementById('result-desc').textContent = r.desc;
+    document.getElementById('result-type').textContent = "<placeholder result page>";
+    document.getElementById('result-desc').textContent = "<placeholder description>";
     document.getElementById('share-toast').style.display = 'none';
 
     show('screen-result');
