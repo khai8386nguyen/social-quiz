@@ -7,7 +7,7 @@ parking logic here later
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mind Garden — What's your social style?</title>
+  <title>Whimsy Swirls — What's your social style?</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -176,8 +176,8 @@ parking logic here later
   <!-- Home -->
   <div class="screen active" id="screen-home">
     <div class="hero-icon"><i class="ti ti-brain"></i></div>
-    <div class="hero-title">Welcome to Mind Garden</div>
-    <div class="hero-sub">8 quick questions to find out whether you're an introvert, ambivert, or extrovert.</div>
+    <div class="hero-title">Welcome to Whimsy Swirls!</div>
+    <div class="hero-sub">Complete your froyo adventure and discover your signature flavour!</div>
     <button class="start-btn" onclick="startQuiz()">Start quiz &rarr;</button>
   </div>
 
@@ -228,88 +228,10 @@ parking logic here later
 
 <script>
   const questions = [
-    {
-      title: "Q1 — The Couch",
-      text: "You had a long day. You're finally home after work. The TV is on, your dishes are still in the sink and you haven't showered… You're on the couch now feeling sleepy. What do you do?",
-      options: [
-        { text: "Set a 15-minute alarm, then close your eyes.", e:0, i:2 },
-        { text: "\"I'll deal with it after I wake up.\"", e:0, i:2 },
-        { text: "You suddenly remembered your parcel arrived and head outside to collect it and open the package.", e:2, i:0 },
-        { text: "Get up immediately before you lose the motivation.", e:2, i:0 }
-      ]
-    },
-    {
-      title: "Q2 — Welcome to Mind Garden",
-      text: "You blink. You're suddenly no longer in your living room. You're standing inside Mind Garden, where adorable little creatures are wandering around. The sign says: Find the Garden Gate. What's your first instinct?",
-      options: [
-        { text: "Look around to understand what is going on first.", e:0, i:2 },
-        { text: "Can't wait for an adventure of a lifetime!", e:2, i:0 },
-        { text: "Keep getting distracted by all the cute creatures and take photos of them.", e:2, i:0 },
-        { text: "Spot one really interesting tree and head straight there.", e:0, i:2 }
-      ]
-    },
-    {
-      title: "Q3 — The Backpack",
-      text: "As you start walking, a tiny rabbit hands you a backpack. You can only bring ONE thing. Which do you pick?",
-      options: [
-        { text: "📒 Notebook", e:0, i:2 },
-        { text: "🍪 Snacks", e:0, i:2 },
-        { text: "🔦 Flashlight", e:2, i:0 },
-        { text: "🎲 Mystery Box", e:2, i:0 }
-      ]
-    },
-    {
-      title: "Q4 — The Glowing Forest",
-      text: "You're following the path... Then you notice glowing mushrooms. Do you...",
-      options: [
-        { text: "Start jumping on them like their steps.", e:2, i:0 },
-        { text: "Wander off to explore.", e:2, i:0 },
-        { text: "Stay on the path.", e:0, i:2 },
-        { text: "Pluck them out of the ground and keep them in your bag.", e:0, i:2 }
-      ]
-    },
-    {
-      title: "Q5 — The River",
-      text: "As you continue walking, you reach a river. The bridge to the other side is broken. You...",
-      options: [
-        { text: "Think of the safest route to get across.", e:0, i:2 },
-        { text: "Jump across.", e:2, i:0 },
-        { text: "Sit down and think for a while.", e:0, i:2 },
-        { text: "Notice some fish swimming and want to go catch them.", e:2, i:0 }
-      ]
-    },
-    {
-      title: "Q6 — Lost Keys",
-      text: "After crossing the bridge, a squirrel runs over. \"I've lost my keys!\" You...",
-      options: [
-        { text: "Help search every corner carefully.", e:0, i:2 },
-        { text: "Ask where they last saw them.", e:0, i:2 },
-        { text: "Search together, but notice lots of other interesting things too.", e:2, i:0 },
-        { text: "Start checking immediately without asking questions.", e:2, i:0 }
-      ]
-    },
-    {
-      title: "Q7 — The Giant Library",
-      text: "You walk into a magical library. How does this usually end?",
-      options: [
-        { text: "I accidentally spend hours reading one topic.", e:0, i:2 },
-        { text: "I pick up six different books.", e:2, i:0 },
-        { text: "I find one book I came for and leave.", e:0, i:2 },
-        { text: "I remember I was supposed to be somewhere else.", e:2, i:0 }
-      ]
-    },
-    {
-      title: "Q8 — The Treasure Chest",
-      text: "As you are leaving the library, you find a locked treasure chest. What's your approach?",
-      options: [
-        { text: "Study the lock carefully.", e:0, i:2 },
-        { text: "Try every key.", e:2, i:0 },
-        { text: "Look around for clues.", e:0, i:2 },
-        { text: "Get distracted before opening it.", e:2, i:0 }
-      ]
-    }
+
   ];
 
+  const flavourTypes=['Rainbow Rush','Honey Granola Bliss','Salted Caramel Crunch','Berry Burst','Matcha Bloom','Triple Chocolate Crunch'];
   const resultData = {
     extrovert: { label: "Extrovert", badgeBg: "#FAEEDA", badgeColor: "#633806", desc: "You thrive in social settings and draw energy from people around you. You're expressive, outgoing, and love engaging with the world." },
     ambivert:  { label: "Ambivert",  badgeBg: "#E1F5EE", badgeColor: "#085041", desc: "You sit comfortably in the middle: social when the mood is right, equally happy solo. You adapt well to different people and situations." },
@@ -376,13 +298,14 @@ parking logic here later
     const key = ePct >= 70 ? 'extrovert' : ePct <= 30 ? 'introvert' : 'ambivert';
     const r = resultData[key];
 
-    document.getElementById('result-badge').textContent = "<placeholder result page>";
+    document.getElementById('result-badge').textContent = "Your Froyo Personality";
     document.getElementById('result-badge').style.background = r.badgeBg;
     document.getElementById('result-badge').style.color = r.badgeColor;
-    document.getElementById('result-type').textContent = "<placeholder result page>";
-    document.getElementById('result-desc').textContent = "<placeholder description>";
+    document.getElementById('result-type').textContent = "Your Froyo Personality";
+    document.getElementById('result-desc').textContent = "Result descriptions will be added in a later revision.";
     document.getElementById('share-toast').style.display = 'none';
 
+    alert('Your froyo is ready!');
     show('screen-result');
     setTimeout(() => {
       document.getElementById('bar-e').style.width = ePct + '%';
@@ -406,5 +329,7 @@ parking logic here later
   }
 </script>
 
+
+<!-- TODO: Remaining storyline/questions/results to be updated -->
 </body>
 </html>
