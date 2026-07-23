@@ -301,7 +301,7 @@ logic here
       options: [
         { text: "Feel overwhelmed and frustrated that there are no seats"},
         { text: "Choose one seat to wait for without considering other options"},
-        { text: "Look around before deciding whether to wait or head home"}
+        { text: "Look around before deciding whether to wait or head home"},
         { text: "Think about what kind of spot would help you enjoy your ice cream most"},
         { text: "Leave the store and walk while eating because you just want to eat your froyo"}
       ]
@@ -414,7 +414,7 @@ function restart() { current = 0; scores = {e:0,i:0}; history = []; renderQ(); s
     }, 100);
   }
 
-  <!-- records answer, updates score, remembers what was chosen, and moves the quiz to the next question.-->
+
   function pick(idx) {
     selected = idx;
     document.querySelectorAll('.opt').forEach((b,i) => b.classList.toggle('selected', i===idx));
