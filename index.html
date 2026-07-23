@@ -1,13 +1,14 @@
 <!--
-parking logic here later
+logic here
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DESIGN SPECIFICATIONS --> 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Whimsy Swirls — What's your social style?</title>
+  <title>Mind Garden — What's your social style?</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,6 +101,7 @@ parking logic here later
       font-size: 13px; font-weight: 500; margin-bottom: 1rem;
     }
     .result-type { font-size: 26px; font-weight: 600; color: #111; margin-bottom: 0.75rem; text-align: center; }
+    .result-image { width: 100%; max-width: 380px; height: auto; border-radius: 12px; margin-bottom: 1.25rem; display: block; }
     .result-desc { font-size: 14px; color: #555; text-align: center; line-height: 1.6; margin-bottom: 1.75rem; max-width: 380px; }
 
     .score-section {
@@ -156,6 +158,7 @@ parking logic here later
 
       .result-badge { font-size: 12px; padding: 5px 14px; margin-bottom: 0.75rem; }
       .result-type { font-size: 19px; margin-bottom: 0.5rem; }
+      .result-image { max-width: 100%; margin-bottom: 1rem; }
       .result-desc { font-size: 13px; margin-bottom: 1.25rem; line-height: 1.5; }
 
       .score-section { padding: 0.9rem; margin-bottom: 1.1rem; }
@@ -172,12 +175,16 @@ parking logic here later
 </head>
 <body>
 
+<!-- TEXTUAL CONTENT --> 
 <div class="site">
   <!-- Home -->
   <div class="screen active" id="screen-home">
     <div class="hero-icon"><i class="ti ti-brain"></i></div>
-    <div class="hero-title">Welcome to Whimsy Swirls!</div>
-    <div class="hero-sub">Complete your froyo adventure and discover your signature flavour!</div>
+    <div class="hero-title">Welcome to Whimsy Swirls, the world's most magical frozen yogurt shop!</div>
+    <div class="hero-sub">Ordering a froyo should be simple... right?</div>
+    <div class="hero-sub">Well, not quite.</div>
+    <div class="hero-sub">Inside this shop, every customer has their own way of navigating decisions, surprises and distractions. </div>
+    <div class="hero-sub">Complete your froyo adventure and discover your signature flavour!"</div>
     <button class="start-btn" onclick="startQuiz()">Start quiz &rarr;</button>
   </div>
 
@@ -198,23 +205,6 @@ parking logic here later
       <div class="result-badge" id="result-badge"></div>
       <div class="result-type" id="result-type"></div>
       <div class="result-desc" id="result-desc"></div>
-      <div class="score-section">
-        <div class="score-row">
-          <div class="score-name">Extrovert</div>
-          <div class="score-bg"><div class="score-inner" id="bar-e" style="background:#EF9F27;"></div></div>
-          <div class="score-pct" id="pct-e">0%</div>
-        </div>
-        <div class="score-row">
-          <div class="score-name">Ambivert</div>
-          <div class="score-bg"><div class="score-inner" id="bar-a" style="background:#1D9E75;"></div></div>
-          <div class="score-pct" id="pct-a">0%</div>
-        </div>
-        <div class="score-row">
-          <div class="score-name">Introvert</div>
-          <div class="score-bg"><div class="score-inner" id="bar-i" style="background:#7F77DD;"></div></div>
-          <div class="score-pct" id="pct-i">0%</div>
-        </div>
-      </div>
       <div class="action-row">
         <button class="retry-btn" onclick="restart()">&#8635; Retake</button>
         <button class="share-btn" onclick="shareResult()">&#8679; Share result</button>
@@ -228,10 +218,88 @@ parking logic here later
 
 <script>
   const questions = [
-
+    {
+      title: "Question 1 — You enter the shop...",
+      text: "The menu board lights up with over 50 different flavours. What's your first instinct?",
+      options: [
+        { text: "Ooo, let's just pick something new and see how it goes!", e:0, i:2 },
+        { text: "Already done your research and read reviews before coming. ", e:0, i:2 },
+        { text: "Struggling to decide for 15 mins on what to order.", e:2, i:0 },
+        { text: "Immediately lock onto the same flavour you’ve had the last few times.", e:2, i:0 }
+      ]
+    },
+    {
+      title: "Question 2 — The queue suddenly becomes really long.",
+      text: "What do you do?",
+      options: [
+        { text: "Look around to understand what is going on first.", e:0, i:2 },
+        { text: "Can't wait for an adventure of a lifetime!", e:2, i:0 },
+        { text: "Keep getting distracted by all the cute creatures and take photos of them.", e:2, i:0 },
+        { text: "Spot one really interesting tree and head straight there.", e:0, i:2 }
+      ]
+    },
+    {
+      title: "Q3 — The Backpack",
+      text: "As you start walking, a tiny rabbit hands you a backpack. You can only bring ONE thing. Which do you pick?",
+      options: [
+        { text: "📒 Notebook", e:0, i:2 },
+        { text: "🍪 Snacks", e:0, i:2 },
+        { text: "🔦 Flashlight", e:2, i:0 },
+        { text: "🎲 Mystery Box", e:2, i:0 }
+      ]
+    },
+    {
+      title: "Q4 — The Glowing Forest",
+      text: "You're following the path... Then you notice glowing mushrooms. Do you...",
+      options: [
+        { text: "Start jumping on them like their steps.", e:2, i:0 },
+        { text: "Wander off to explore.", e:2, i:0 },
+        { text: "Stay on the path.", e:0, i:2 },
+        { text: "Pluck them out of the ground and keep them in your bag.", e:0, i:2 }
+      ]
+    },
+    {
+      title: "Q5 — The River",
+      text: "As you continue walking, you reach a river. The bridge to the other side is broken. You...",
+      options: [
+        { text: "Think of the safest route to get across.", e:0, i:2 },
+        { text: "Jump across.", e:2, i:0 },
+        { text: "Sit down and think for a while.", e:0, i:2 },
+        { text: "Notice some fish swimming and want to go catch them.", e:2, i:0 }
+      ]
+    },
+    {
+      title: "Q6 — Lost Keys",
+      text: "After crossing the bridge, a squirrel runs over. \"I've lost my keys!\" You...",
+      options: [
+        { text: "Help search every corner carefully.", e:0, i:2 },
+        { text: "Ask where they last saw them.", e:0, i:2 },
+        { text: "Search together, but notice lots of other interesting things too.", e:2, i:0 },
+        { text: "Start checking immediately without asking questions.", e:2, i:0 }
+      ]
+    },
+    {
+      title: "Q7 — The Giant Library",
+      text: "You walk into a magical library. How does this usually end?",
+      options: [
+        { text: "I accidentally spend hours reading one topic.", e:0, i:2 },
+        { text: "I pick up six different books.", e:2, i:0 },
+        { text: "I find one book I came for and leave.", e:0, i:2 },
+        { text: "I remember I was supposed to be somewhere else.", e:2, i:0 }
+      ]
+    },
+    {
+      title: "Q8 — The Treasure Chest",
+      text: "As you are leaving the library, you find a locked treasure chest. What's your approach?",
+      options: [
+        { text: "Study the lock carefully.", e:0, i:2 },
+        { text: "Try every key.", e:2, i:0 },
+        { text: "Look around for clues.", e:0, i:2 },
+        { text: "Get distracted before opening it.", e:2, i:0 }
+      ]
+    }
   ];
 
-  const flavourTypes=['Rainbow Rush','Honey Granola Bliss','Salted Caramel Crunch','Berry Burst','Matcha Bloom','Triple Chocolate Crunch'];
   const resultData = {
     extrovert: { label: "Extrovert", badgeBg: "#FAEEDA", badgeColor: "#633806", desc: "You thrive in social settings and draw energy from people around you. You're expressive, outgoing, and love engaging with the world." },
     ambivert:  { label: "Ambivert",  badgeBg: "#E1F5EE", badgeColor: "#085041", desc: "You sit comfortably in the middle: social when the mood is right, equally happy solo. You adapt well to different people and situations." },
@@ -298,14 +366,13 @@ parking logic here later
     const key = ePct >= 70 ? 'extrovert' : ePct <= 30 ? 'introvert' : 'ambivert';
     const r = resultData[key];
 
-    document.getElementById('result-badge').textContent = "Your Froyo Personality";
+    document.getElementById('result-badge').textContent = "<placeholder result page>";
     document.getElementById('result-badge').style.background = r.badgeBg;
     document.getElementById('result-badge').style.color = r.badgeColor;
-    document.getElementById('result-type').textContent = "Your Froyo Personality";
-    document.getElementById('result-desc').textContent = "Result descriptions will be added in a later revision.";
+    document.getElementById('result-type').textContent = "<placeholder result page>";
+    document.getElementById('result-desc').textContent = "<placeholder description>";
     document.getElementById('share-toast').style.display = 'none';
 
-    alert('Your froyo is ready!');
     show('screen-result');
     setTimeout(() => {
       document.getElementById('bar-e').style.width = ePct + '%';
@@ -329,7 +396,5 @@ parking logic here later
   }
 </script>
 
-
-<!-- TODO: Remaining storyline/questions/results to be updated -->
 </body>
 </html>
