@@ -8,7 +8,7 @@ logic here
 <!-- DESIGN SPECIFICATIONS --> 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mind Garden — What's your social style?</title>
+  <title>Mind Garden - What's your social style?</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -219,91 +219,122 @@ logic here
 <script>
   const questions = [
     {
-      title: "Question 1 — You enter the shop...",
+      title: "Question 1 - You enter the shop...",
       text: "The menu board lights up with over 50 different flavours. What's your first instinct?",
       options: [
-        { text: "Ooo, let's just pick something new and see how it goes!", e:0, i:2 },
-        { text: "Already done your research and read reviews before coming. ", e:0, i:2 },
-        { text: "Struggling to decide for 15 mins on what to order.", e:2, i:0 },
-        { text: "Immediately lock onto the same flavour you’ve had the last few times.", e:2, i:0 }
+        { text: "Ooo, let's just pick something new and see how it goes!"},
+        { text: "Already done your research and read reviews before coming. "},
+        { text: "Struggling to decide for 15 mins on what to order."},
+        { text: "Immediately lock onto the same flavour you’ve had the last few times."}
       ]
     },
     {
-      title: "Question 2 — The queue suddenly becomes really long.",
+      title: "Question 2 - The queue suddenly becomes really long.",
       text: "What do you do?",
       options: [
-        { text: "Look around to understand what is going on first.", e:0, i:2 },
-        { text: "Can't wait for an adventure of a lifetime!", e:2, i:0 },
-        { text: "Keep getting distracted by all the cute creatures and take photos of them.", e:2, i:0 },
-        { text: "Spot one really interesting tree and head straight there.", e:0, i:2 }
+        { text: "Jump into whichever queue looks shortest."},
+        { text: "Stay determined to get your froyo no matter how long it takes."},
+        { text: "Switching queues every time another one looks shorter. "},
+        { text: "Notice you’re getting impatient and frustrated."}
       ]
     },
     {
-      title: "Q3 — The Backpack",
-      text: "As you start walking, a tiny rabbit hands you a backpack. You can only bring ONE thing. Which do you pick?",
+      title: "Q3 - While waiting...",
+      text: "You notice a magical \"Create Your Own Flavour\" machine.",
       options: [
-        { text: "📒 Notebook", e:0, i:2 },
-        { text: "🍪 Snacks", e:0, i:2 },
-        { text: "🔦 Flashlight", e:2, i:0 },
-        { text: "🎲 Mystery Box", e:2, i:0 }
+        { text: "Completely lose track of time designing the perfect flavour while others have moved on "},
+        { text: "Spend ten minutes searching for the perfect recipe before touching the machine"},
+        { text: "Pause to reflect on past flavour combinations and think about what you’ll actually like"},
       ]
     },
     {
-      title: "Q4 — The Glowing Forest",
-      text: "You're following the path... Then you notice glowing mushrooms. Do you...",
+      title: "Question 4 - When you turn around, you see a magical red door… ",
+      text: "What do you do?",
       options: [
-        { text: "Start jumping on them like their steps.", e:2, i:0 },
-        { text: "Wander off to explore.", e:2, i:0 },
-        { text: "Stay on the path.", e:0, i:2 },
-        { text: "Pluck them out of the ground and keep them in your bag.", e:0, i:2 }
+        { text: "Start asking around about where that door leads to"},
+        { text: "Decide to just open the door and see for yourself"},
+        { text: "Not bothered by the red door and continue walking to the cashier"},
+        { text: "Feeling anxious about what could be behind the door"},
       ]
     },
     {
-      title: "Q5 — The River",
-      text: "As you continue walking, you reach a river. The bridge to the other side is broken. You...",
+      title: "Question 5 - The red door opens to reveal a magical toppings station",
+      text: "You see 2 routes you can take…",
       options: [
-        { text: "Think of the safest route to get across.", e:0, i:2 },
-        { text: "Jump across.", e:2, i:0 },
-        { text: "Sit down and think for a while.", e:0, i:2 },
-        { text: "Notice some fish swimming and want to go catch them.", e:2, i:0 }
+        { text: "Route A - The Safe Bet. Predictable toppings like chocolate, sauces, fruits "},
+        { text: "Route B - Mystery Toppings, you wont know until you get there! "},
+        { text: "Hmm, lemme think."},
       ]
     },
     {
-      title: "Q6 — Lost Keys",
-      text: "After crossing the bridge, a squirrel runs over. \"I've lost my keys!\" You...",
+      title: "Question 6 - Oh no...",
+      text: "Your favourite topping just ran out! What do you do?",
       options: [
-        { text: "Help search every corner carefully.", e:0, i:2 },
-        { text: "Ask where they last saw them.", e:0, i:2 },
-        { text: "Search together, but notice lots of other interesting things too.", e:2, i:0 },
-        { text: "Start checking immediately without asking questions.", e:2, i:0 }
+        { text: "\"The goal is to get my froyo..\" quickly chooses another topping because you want to get your froyo "},
+        { text: "Feeling like your whole day is ruined since you wanted your OG chocolate chips from the start "},
+        { text: "\"That wasn’t part of the plan…\" finds the closest substitute to what you originally wanted "},
+        { text: "Take so long comparing alternatives that multiple people get their froyo first"}
       ]
     },
     {
-      title: "Q7 — The Giant Library",
-      text: "You walk into a magical library. How does this usually end?",
+      title: "Question  7 - You accidentally spill some toppings.",
       options: [
-        { text: "I accidentally spend hours reading one topic.", e:0, i:2 },
-        { text: "I pick up six different books.", e:2, i:0 },
-        { text: "I find one book I came for and leave.", e:0, i:2 },
-        { text: "I remember I was supposed to be somewhere else.", e:2, i:0 }
+        { text: "Feel really guilty and embarrassed for making a mess"},
+        { text: "You don’t notice the spill because you’re so fixated on reaching the cashier"},
+        { text: "You won’t let a spill stop you from getting your dessert so you clean it up quickly "}
       ]
     },
     {
-      title: "Q8 — The Treasure Chest",
-      text: "As you are leaving the library, you find a locked treasure chest. What's your approach?",
+      title: "Question 8 - The cashier asks:",
+      text: "\"Would you like to try today's mystery topping?\"",
       options: [
-        { text: "Study the lock carefully.", e:0, i:2 },
-        { text: "Try every key.", e:2, i:0 },
-        { text: "Look around for clues.", e:0, i:2 },
-        { text: "Get distracted before opening it.", e:2, i:0 }
+        { text: "Nope, I’m happy with what I have!"},
+        { text: "Yes, because it makes me excited "},
+        { text: "Immediate YES"},
+        { text: "Ask fifteen follow-up questions about the topping before deciding"}/
+        { text: "Nope, I don’t like being surprised.. What if I don’t like it? "},
       ]
-    }
+    },
+    {
+      title: "Question 9 - After paying, you try to find a seat ",
+      text: "The whole place is completely packed!",
+      options: [
+        { text: "Feel overwhelmed and frustrated that there are no seats"},
+        { text: "Choose one seat to wait for without considering other options"},
+        { text: "Look around before deciding whether to wait or head home"}
+        { text: "Think about what kind of spot would help you enjoy your ice cream most"},
+        { text: "Leave the store and walk while eating because you just want to eat your froyo"}
+      ]
+    },
+    {
+      title: "Question 10 - Before you leave, the staff asks you…",
+      text: "\"What's the BEST part of building your froyo?\"",
+      options: [
+        { text: "Being spontaneous and trying something new!"},
+        { text: "Discovering what I like in my froyo!"},
+        { text: "Researching and planning the perfect combination of yogurt and topping!"},
+        { text: "Finally seeing my froyo come together makes it worth it!"},
+        { text: "I felt excited and happy doing it!"},
+        { text: "I loved getting completely absorbed in building my froyo!"}
+      ]
+    },
+    {
+      title: "Your froyo is ready! ",
+      text: "A magical spoon glows...",
+      options: [
+        { text: "Every froyo tells a story"},
+        { text: "Let's see what yours says.."},
+      ]
+    },
   ];
 
   const resultData = {
-    extrovert: { label: "Extrovert", badgeBg: "#FAEEDA", badgeColor: "#633806", desc: "You thrive in social settings and draw energy from people around you. You're expressive, outgoing, and love engaging with the world." },
-    ambivert:  { label: "Ambivert",  badgeBg: "#E1F5EE", badgeColor: "#085041", desc: "You sit comfortably in the middle: social when the mood is right, equally happy solo. You adapt well to different people and situations." },
-    introvert: { label: "Introvert", badgeBg: "#EEEDFE", badgeColor: "#3C3489", desc: "You recharge through solitude and prefer deep one-on-one connections over crowds. Thoughtful, observant, with a rich inner world." }
+    rainbow_rush: { label: "Rainbow Rush", badgeBg: "#FAEEDA", badgeColor: "#633806", desc: "the doer" },
+    granola_bliss:  { label: "Granola Bliss",  badgeBg: "#E1F5EE", badgeColor: "#085041", desc: "the planner" },
+    caramel_crunch: { label: "Caramel Crunch", badgeBg: "#EEEDFE", badgeColor: "#3C3489", desc: "follow through" },
+    berry_burst: { label: "Berry Burst", badgeBg: "#EEEDFE", badgeColor: "#3C3489", desc: "the thinker" },
+    Matcha_Bloom: { label: "Matcha Bloom", badgeBg: "#EEEDFE", badgeColor: "#3C3489", desc: "the storm" },
+    triple_chocolate: { label: "Triple Chocolate", badgeBg: "#EEEDFE", badgeColor: "#3C3489", desc: "hyperfocused" },
   };
 
   let current = 0, scores = {e:0,i:0}, selected = null, history = [];
@@ -334,19 +365,6 @@ logic here
     selected = null;
   }
 
-  function pick(idx) {
-    selected = idx;
-    document.querySelectorAll('.opt').forEach((b,i) => b.classList.toggle('selected', i===idx));
-    const o = questions[current].options[idx];
-    scores.e += o.e; scores.i += o.i;
-    history[current] = idx;
-    current++;
-    setTimeout(() => {
-      if (current < questions.length) { renderQ(); }
-      else { showResult(); }
-    }, 300);
-  }
-
   function goBack() {
     if (current <= 0) return;
     current--;
@@ -358,6 +376,18 @@ logic here
     renderQ();
   }
 
+function restart() { current = 0; scores = {e:0,i:0}; history = []; renderQ(); show('screen-quiz'); }
+
+  function shareResult() {
+    const type = document.getElementById('result-type').textContent;
+    navigator.clipboard.writeText(type + ' - take the quiz: ' + window.location.href).then(() => {
+      const t = document.getElementById('share-toast');
+      t.style.display = 'block';
+      setTimeout(() => t.style.display = 'none', 2500);
+    });
+  }
+
+  <!-- urgent update: calculation logic -->
   function showResult() {
     const total = scores.e + scores.i;
     const ePct = Math.round(scores.e / total * 100);
@@ -384,17 +414,21 @@ logic here
     }, 100);
   }
 
-  function restart() { current = 0; scores = {e:0,i:0}; history = []; renderQ(); show('screen-quiz'); }
-
-  function shareResult() {
-    const type = document.getElementById('result-type').textContent;
-    navigator.clipboard.writeText(type + ' — take the quiz: ' + window.location.href).then(() => {
-      const t = document.getElementById('share-toast');
-      t.style.display = 'block';
-      setTimeout(() => t.style.display = 'none', 2500);
-    });
+  <!-- records answer, updates score, remembers what was chosen, and moves the quiz to the next question.-->
+  function pick(idx) {
+    selected = idx;
+    document.querySelectorAll('.opt').forEach((b,i) => b.classList.toggle('selected', i===idx));
+    const o = questions[current].options[idx];
+    scores.e += o.e; scores.i += o.i;
+    history[current] = idx;
+    current++;
+    setTimeout(() => {
+      if (current < questions.length) { renderQ(); }
+      else { showResult(); }
+    }, 300);
   }
-</script>
+
+  </script>
 
 </body>
 </html>
