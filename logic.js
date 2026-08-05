@@ -32,7 +32,7 @@ const questions = [
       title: "Q4 — When you turn around, you see a magical red door…",
       text: "What do you do?",
       options: [
-        { text: "Ask around before opening the door.", scores: { thinker: 1, planner: 1 } },
+        { text: "Ask around before opening the door.", scores: { thinker: 2, planner: 2 } }, /dual scorer/
         { text: "Decide to just open the door and see for yourself.", scores: { doer: 2 } },
         { text: "Ignore it and head to the cashier.", scores: { follow: 2 } },
         { text: "Feeling anxious, \u201cI wonder what might be behind it…\u201d", scores: { storm: 2 } }
@@ -52,7 +52,7 @@ const questions = [
       text: "Your favourite topping just ran out! What do you do?",
       options: [
         { text: "Pick another topping and keep moving.", scores: { follow: 2 } },
-        { text: "Feeling disappointed, as it was your favourite.", scores: { storm: 1, laser: 1 } },
+        { text: "Feeling disappointed, as it was your favourite.", scores: { storm: 2, laser: 2 } }, /dual scorer/
         { text: "\u201cThat wasn't part of the plan…\u201d Finds the closest substitute.", scores: { planner: 2 } },
         { text: "Take so long comparing alternatives that multiple people get their froyo first.", scores: { thinker: 2 } }
       ]
@@ -70,8 +70,8 @@ const questions = [
       title: "Q8 — The cashier asks...",
       text: "\u201cWould you like to try today's mystery topping?\u201d",
       options: [
-        { text: "Nope, I'm happy with what I have!", scores: { follow: 1, laser: 1 } },
-        { text: "Yes! It sounds exciting.", scores: { storm: 1, doer: 1 } },
+        { text: "Nope, I'm happy with what I have!", scores: { follow: 2, laser: 2 } }, /dual scorer/
+        { text: "Yes! It sounds exciting.", scores: { storm: 2, doer: 2 } }, /dual scorer/
         { text: "Ask fifteen follow-up questions about the topping before deciding.", scores: { thinker: 2 } },
         { text: "Nope, I don't like being surprised. What if I don't like it?", scores: { planner: 2 } }
       ]
@@ -83,7 +83,7 @@ const questions = [
         { text: "Feel overwhelmed and frustrated that there are no seats.", scores: { storm: 2 } },
         { text: "Choose one seat closest to the window and wait for it.", scores: { laser: 2 } },
         { text: "Look around before deciding whether to wait or head home.", scores: { planner: 2 } },
-        { text: "Leave the store and walk home while eating.", scores: { follow: 1, doer: 1 } }
+        { text: "Leave the store and walk home while eating.", scores: { follow: 2, doer: 2 } } /dual scorer/
       ]
     },
     {
