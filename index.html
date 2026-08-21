@@ -1,32 +1,19 @@
-<!--
-Scoring logic for the Whimsy Swirls froyo personality quiz:
-
-Each answer is tagged with one (sometimes two) of six decision-making styles:
-  doer    -> The Doer            -> Rainbow Rush
-  planner -> The Planner         -> Honey Granola Bliss
-  thinker -> The Thinker         -> Matcha Bloom
-  laser   -> The Laser           -> Triple Chocolate Crunch
-  follow  -> Follow Through      -> Salted Caramel Crunch
-  storm   -> The Storm           -> Berry Burst
-
-Every question contributes 2 points total. Answers tagged with a single style
-give that style 2 points; answers tagged with two styles split the points,
-giving 1 point to each.
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Whimsy Swirls — What's your froyo flavour?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lexend+Deca:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f4f0;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #e9a43b 0%, #d9873e 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -41,6 +28,7 @@ giving 1 point to each.
       background: #fff;
       border-radius: 16px;
       border: 0.5px solid rgba(0,0,0,0.1);
+      box-shadow: 0 20px 50px rgba(87, 53, 31, 0.25);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -53,17 +41,17 @@ giving 1 point to each.
     /* Home screen */
     .hero-icon {
       width: 64px; height: 64px; border-radius: 50%;
-      background: #EEEDFE; display: flex; align-items: center;
+      background: #f7e8d6; display: flex; align-items: center;
       justify-content: center; margin-bottom: 1.25rem;
     }
-    .hero-icon i { font-size: 28px; color: #534AB7; }
-    .hero-title { font-size: 22px; font-weight: 600; color: #111; text-align: center; margin-bottom: 0.5rem; }
-    .hero-sub { font-size: 14px; color: #666; text-align: center; margin-bottom: 1.75rem; line-height: 1.6; max-width: 340px; }
+    .hero-icon i { font-size: 28px; color: #d9873e; }
+    .hero-title { font-size: 22px; font-weight: 600; color: #57351f; text-align: center; margin-bottom: 0.5rem; }
+    .hero-sub { font-size: 14px; color: #57351f; text-align: center; margin-bottom: 1.75rem; line-height: 1.6; max-width: 340px; }
     .start-btn {
-      padding: 0.7rem 2.25rem; background: #7F77DD; color: #fff;
+      padding: 0.7rem 2.25rem; background: #e9a43b; color: #57351f;
       border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer;
     }
-    .start-btn:hover { background: #534AB7; }
+    .start-btn:hover { background: #d9873e; }
 
     /* Quiz screen */
     .quiz-wrap { width: 100%; }
@@ -74,23 +62,23 @@ giving 1 point to each.
       background: #e5e5e5;
       transition: background 0.3s ease, transform 0.3s ease;
     }
-    .dot.done { background: #AFA9EC; }
-    .dot.active { background: #7F77DD; transform: scale(1.3); }
+    .dot.done { background: #efc98a; }
+    .dot.active { background: #e9a43b; transform: scale(1.3); }
 
-    .q-title { font-size: 12px; font-weight: 600; color: #7F77DD; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
-    .q-text { font-size: 15px; font-weight: 500; color: #111; margin-bottom: 1.25rem; line-height: 1.45; }
+    .q-title { font-size: 12px; font-weight: 600; color: #57351f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+    .q-text { font-size: 15px; font-weight: 500; color: #57351f; margin-bottom: 1.25rem; line-height: 1.45; }
 
     .opt {
       display: flex; align-items: flex-start; gap: 12px;
       width: 100%; padding: 0.625rem 0.875rem; margin-bottom: 0.6rem;
       border-radius: 12px; border: 0.5px solid #ddd;
-      background: #fff; color: #222; font-size: 13px;
+      background: #fff; color: #57351f; font-size: 15px;
       cursor: pointer; text-align: left; line-height: 1.4;
       transition: border-color 0.15s, background 0.15s;
-      font-family: inherit;
+      font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    .opt:hover { border-color: #7F77DD; background: #EEEDFE; color: #3C3489; }
-    .opt.selected { border: 2px solid #7F77DD; background: #EEEDFE; color: #3C3489; font-weight: 500; }
+    .opt:hover { border-color: #e9a43b; background: #f7e8d6; color: #57351f; }
+    .opt.selected { border: 2px solid #e9a43b; background: #f7e8d6; color: #57351f; font-weight: 500; }
     .opt-letter {
       width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid currentColor;
       display: flex; align-items: center; justify-content: center;
@@ -100,10 +88,10 @@ giving 1 point to each.
       display: none; align-items: center; gap: 6px;
       margin-top: 1rem; padding: 0.5rem 1rem;
       border-radius: 8px; border: 0.5px solid #ddd;
-      background: #fff; color: #666; font-size: 14px;
+      background: #fff; color: #57351f; font-size: 14px;
       cursor: pointer; font-family: inherit;
     }
-    .back-btn:hover { background: #f5f5f5; color: #333; }
+    .back-btn:hover { background: #f5f5f5; color: #57351f; }
 
     /* Result screen */
     .result-badge {
@@ -111,8 +99,8 @@ giving 1 point to each.
       padding: 6px 16px; border-radius: 99px;
       font-size: 13px; font-weight: 500; margin-bottom: 1rem;
     }
-    .result-type { font-size: 26px; font-weight: 600; color: #111; margin-bottom: 0.75rem; text-align: center; }
-    .result-desc { font-size: 14px; color: #555; text-align: center; line-height: 1.6; margin-bottom: 1.75rem; max-width: 380px; }
+    .result-type { font-size: 26px; font-weight: 600; color: #57351f; margin-bottom: 0.75rem; text-align: center; }
+    .result-desc { font-size: 14px; color: #57351f; text-align: center; line-height: 1.6; margin-bottom: 1.75rem; max-width: 380px; }
 
     .score-section {
       width: 100%; background: #fafafa; border: 0.5px solid #e5e5e5;
@@ -120,36 +108,36 @@ giving 1 point to each.
     }
     .score-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
     .score-row:last-child { margin-bottom: 0; }
-    .score-name { font-size: 13px; color: #666; width: 92px; text-align: right; }
+    .score-name { font-size: 13px; color: #57351f; width: 92px; text-align: right; }
     .score-bg { flex: 1; height: 8px; background: #e5e5e5; border-radius: 99px; overflow: hidden; }
     .score-inner { height: 100%; border-radius: 99px; transition: width 0.7s ease; width: 0%; }
-    .score-pct { font-size: 13px; color: #666; width: 34px; }
+    .score-pct { font-size: 13px; color: #57351f; width: 34px; }
 
     .action-row { display: flex; gap: 10px; width: 100%; }
     .retry-btn {
       flex: 1; padding: 0.7rem; border-radius: 8px;
-      border: 0.5px solid #ccc; background: #fff; color: #222;
+      border: 0.5px solid #ccc; background: #fff; color: #57351f;
       font-size: 14px; cursor: pointer; font-family: inherit;
     }
     .retry-btn:hover { background: #f5f5f5; }
     .share-btn {
       flex: 1; padding: 0.7rem; border-radius: 8px;
-      border: none; background: #7F77DD; color: #fff;
+      border: none; background: #e9a43b; color: #57351f;
       font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
     }
-    .share-btn:hover { background: #534AB7; }
+    .share-btn:hover { background: #d9873e; }
     .share-toast { font-size: 13px; color: #0F6E56; margin-top: 0.75rem; text-align: center; display: none; }
 
     footer {
-      text-align: center; font-size: 12px; color: #aaa;
+      text-align: center; font-size: 12px; color: #57351f;
       padding: 1rem; border-top: 0.5px solid #eee;
       width: 100%;
     }
 
     /* Mobile */
     @media (max-width: 480px) {
-      body { padding: 0; justify-content: flex-start; }
-      .site { max-width: 100%; border-radius: 0; border-left: none; border-right: none; min-height: 100vh; }
+      body { padding: 1.25rem 0.75rem; }
+      .site { border-radius: 16px; }
       .screen { padding: 1.5rem 1.25rem; }
 
       .hero-icon { width: 52px; height: 52px; margin-bottom: 1rem; }
@@ -163,7 +151,7 @@ giving 1 point to each.
 
       .q-title { font-size: 11px; margin-bottom: 0.4rem; }
       .q-text { font-size: 13.5px; margin-bottom: 1rem; line-height: 1.4; }
-      .opt { font-size: 12.5px; padding: 0.55rem 0.75rem; margin-bottom: 0.5rem; gap: 8px; }
+      .opt { font-size: 14px; padding: 0.55rem 0.75rem; margin-bottom: 0.5rem; gap: 8px; }
       .back-btn { font-size: 13px; padding: 0.45rem 0.9rem; margin-top: 0.75rem; }
 
       .result-badge { font-size: 12px; padding: 5px 14px; margin-bottom: 0.75rem; }
@@ -214,52 +202,55 @@ giving 1 point to each.
   <!-- Result -->
   <div class="screen" id="screen-result">
     <div style="width:100%;max-width:480px;display:flex;flex-direction:column;align-items:center;">
-      <div class="result-badge" id="result-badge"></div>
-      <div class="result-type" id="result-type"></div>
-      <div class="result-desc" id="result-desc"></div>
-      <div class="score-section">
-        <div class="score-row">
-          <div class="score-name">The Doer</div>
-          <div class="score-bg"><div class="score-inner" id="bar-doer" style="background:#CFE2F3;"></div></div>
-          <div class="score-pct" id="pct-doer">0%</div>
-        </div>
-        <div class="score-row">
-          <div class="score-name">The Planner</div>
-          <div class="score-bg"><div class="score-inner" id="bar-planner" style="background:#FFF2CC;"></div></div>
-          <div class="score-pct" id="pct-planner">0%</div>
-        </div>
-        <div class="score-row">
-          <div class="score-name">The Thinker</div>
-          <div class="score-bg"><div class="score-inner" id="bar-thinker" style="background:#D9EAD3;"></div></div>
-          <div class="score-pct" id="pct-thinker">0%</div>
-        </div>
-        <div class="score-row">
-          <div class="score-name">The Laser</div>
-          <div class="score-bg"><div class="score-inner" id="bar-laser" style="background:#E6B8AF;"></div></div>
-          <div class="score-pct" id="pct-laser">0%</div>
-        </div>
-        <div class="score-row">
-          <div class="score-name">Follow Through</div>
-          <div class="score-bg"><div class="score-inner" id="bar-follow" style="background:#FCE5CD;"></div></div>
-          <div class="score-pct" id="pct-follow">0%</div>
-        </div>
-        <div class="score-row">
-          <div class="score-name">The Storm</div>
-          <div class="score-bg"><div class="score-inner" id="bar-storm" style="background:#D9D2E9;"></div></div>
-          <div class="score-pct" id="pct-storm">0%</div>
+      <div id="result-capture" style="width:100%;display:flex;flex-direction:column;align-items:center;background:#fff;">
+        <div class="result-badge" id="result-badge"></div>
+        <div class="result-type" id="result-type"></div>
+        <div class="result-desc" id="result-desc"></div>
+        <div class="score-section">
+          <div class="score-row">
+            <div class="score-name">The Doer</div>
+            <div class="score-bg"><div class="score-inner" id="bar-doer" style="background:#f7e8d6;"></div></div>
+            <div class="score-pct" id="pct-doer">0%</div>
+          </div>
+          <div class="score-row">
+            <div class="score-name">The Planner</div>
+            <div class="score-bg"><div class="score-inner" id="bar-planner" style="background:#e9a43b;"></div></div>
+            <div class="score-pct" id="pct-planner">0%</div>
+          </div>
+          <div class="score-row">
+            <div class="score-name">The Thinker</div>
+            <div class="score-bg"><div class="score-inner" id="bar-thinker" style="background:#7e8447;"></div></div>
+            <div class="score-pct" id="pct-thinker">0%</div>
+          </div>
+          <div class="score-row">
+            <div class="score-name">The Laser</div>
+            <div class="score-bg"><div class="score-inner" id="bar-laser" style="background:#e76f61;"></div></div>
+            <div class="score-pct" id="pct-laser">0%</div>
+          </div>
+          <div class="score-row">
+            <div class="score-name">Follow Through</div>
+            <div class="score-bg"><div class="score-inner" id="bar-follow" style="background:#d9873e;"></div></div>
+            <div class="score-pct" id="pct-follow">0%</div>
+          </div>
+          <div class="score-row">
+            <div class="score-name">The Storm</div>
+            <div class="score-bg"><div class="score-inner" id="bar-storm" style="background:#e99a91;"></div></div>
+            <div class="score-pct" id="pct-storm">0%</div>
+          </div>
         </div>
       </div>
       <div class="action-row">
         <button class="retry-btn" onclick="restart()">&#8635; Retake</button>
-        <button class="share-btn" onclick="shareResult()">&#8679; Share result</button>
+        <button class="share-btn" onclick="downloadResult()">&#8681; Download result</button>
       </div>
-      <div class="share-toast" id="share-toast">&#10003; Copied to clipboard!</div>
+      <div class="share-toast" id="share-toast">&#10003; Image downloaded!</div>
     </div>
   </div>
 
   <footer>Telegram @chipthelemon &middot; www.khai8386nguyen.github.io/</footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 const questions = [
     {
@@ -514,13 +505,25 @@ const questions = [
 
   function restart() { current = 0; resetScores(); history = []; renderQ(); show('screen-quiz'); }
 
-  function shareResult() {
-    const flavour = document.getElementById('result-type').textContent;
-    const style = document.getElementById('result-badge').textContent;
-    navigator.clipboard.writeText(style + ' — ' + flavour + ' — take the quiz: ' + window.location.href).then(() => {
+  function downloadResult() {
+    const target = document.getElementById('result-capture');
+    const flavour = document.getElementById('result-type').textContent.trim();
+    const filename = 'whimsy-swirls-' + flavour.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.png';
+
+    html2canvas(target, { backgroundColor: '#ffffff', scale: 2 }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+
       const t = document.getElementById('share-toast');
       t.style.display = 'block';
       setTimeout(() => t.style.display = 'none', 2500);
+    }).catch(() => {
+      const t = document.getElementById('share-toast');
+      t.textContent = 'Couldn\u2019t generate image — try a screenshot instead.';
+      t.style.display = 'block';
+      setTimeout(() => t.style.display = 'none', 3000);
     });
   }
 
