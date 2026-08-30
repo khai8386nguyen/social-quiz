@@ -8,166 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lexend+Deca:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
-  <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(160deg, #e9a43b 0%, #d9873e 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem 1rem;
-    }
-
-    .site {
-      width: 100%;
-      max-width: 560px;
-      background: #fff;
-      border-radius: 16px;
-      border: 0.5px solid rgba(0,0,0,0.1);
-      box-shadow: 0 20px 50px rgba(87, 53, 31, 0.25);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .screen { display: none; padding: 2.5rem 2rem; animation: fadeIn 0.3s ease; flex: 1; }
-    .screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Home screen */
-    .hero-icon {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: #f7e8d6; display: flex; align-items: center;
-      justify-content: center; margin-bottom: 1.25rem;
-    }
-    .hero-icon i { font-size: 28px; color: #d9873e; }
-    .hero-title { font-size: 22px; font-weight: 600; color: #57351f; text-align: center; margin-bottom: 0.5rem; }
-    .hero-sub { font-size: 14px; color: #57351f; text-align: center; margin-bottom: 1.75rem; line-height: 1.6; max-width: 340px; }
-    .start-btn {
-      padding: 0.7rem 2.25rem; background: #e9a43b; color: #57351f;
-      border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer;
-    }
-    .start-btn:hover { background: #d9873e; }
-
-    /* Quiz screen */
-    .quiz-wrap { width: 100%; }
-
-    .dots-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 1.75rem; flex-wrap: wrap; }
-    .dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #e5e5e5;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    .dot.done { background: #efc98a; }
-    .dot.active { background: #e9a43b; transform: scale(1.3); }
-
-    .q-text { font-size: 15px; font-weight: 500; color: #57351f; margin-bottom: 1.25rem; line-height: 1.45; }
-
-    .opt {
-      display: flex; align-items: flex-start; gap: 12px;
-      width: 100%; padding: 0.625rem 0.875rem; margin-bottom: 0.6rem;
-      border-radius: 12px; border: 0.5px solid #ddd;
-      background: #fff; color: #57351f; font-size: 15px;
-      cursor: pointer; text-align: left; line-height: 1.4;
-      transition: border-color 0.15s, background 0.15s;
-      font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-    .opt:hover { border-color: #e9a43b; background: #f7e8d6; color: #57351f; }
-    .opt.selected { border: 2px solid #e9a43b; background: #f7e8d6; color: #57351f; font-weight: 500; }
-    .opt-letter {
-      width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid currentColor;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 500; flex-shrink: 0; margin-top: 1px; opacity: 0.6;
-    }
-    .back-btn {
-      display: none; align-items: center; gap: 6px;
-      margin-top: 1rem; padding: 0.5rem 1rem;
-      border-radius: 8px; border: 0.5px solid #ddd;
-      background: #fff; color: #57351f; font-size: 14px;
-      cursor: pointer; font-family: inherit;
-    }
-    .back-btn:hover { background: #f5f5f5; color: #57351f; }
-
-    /* Result screen */
-    .result-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px; border-radius: 99px;
-      font-size: 13px; font-weight: 500; margin-bottom: 1rem;
-    }
-    .result-type { font-size: 26px; font-weight: 600; color: #57351f; margin-bottom: 0.75rem; text-align: center; }
-    .result-desc { font-size: 14px; color: #57351f; text-align: center; line-height: 1.6; margin-bottom: 1.75rem; max-width: 380px; }
-
-    .score-section {
-      width: 100%; background: #fafafa; border: 0.5px solid #e5e5e5;
-      border-radius: 12px; padding: 1.125rem; margin-bottom: 1.5rem;
-    }
-    .score-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .score-row:last-child { margin-bottom: 0; }
-    .score-name { font-size: 13px; color: #57351f; width: 92px; text-align: right; }
-    .score-bg { flex: 1; height: 8px; background: #e5e5e5; border-radius: 99px; overflow: hidden; }
-    .score-inner { height: 100%; border-radius: 99px; transition: width 0.7s ease; width: 0%; }
-    .score-pct { font-size: 13px; color: #57351f; width: 34px; }
-
-    .action-row { display: flex; gap: 10px; width: 100%; }
-    .retry-btn {
-      flex: 1; padding: 0.7rem; border-radius: 8px;
-      border: 0.5px solid #ccc; background: #fff; color: #57351f;
-      font-size: 14px; cursor: pointer; font-family: inherit;
-    }
-    .retry-btn:hover { background: #f5f5f5; }
-    .share-btn {
-      flex: 1; padding: 0.7rem; border-radius: 8px;
-      border: none; background: #e9a43b; color: #57351f;
-      font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
-    }
-    .share-btn:hover { background: #d9873e; }
-    .share-toast { font-size: 13px; color: #0F6E56; margin-top: 0.75rem; text-align: center; display: none; }
-
-    footer {
-      text-align: center; font-size: 12px; color: #57351f;
-      padding: 1rem; border-top: 0.5px solid #eee;
-      width: 100%;
-    }
-
-    /* Mobile */
-    @media (max-width: 480px) {
-      body { padding: 1.25rem 0.75rem; }
-      .site { border-radius: 16px; }
-      .screen { padding: 1.5rem 1.25rem; }
-
-      .hero-icon { width: 52px; height: 52px; margin-bottom: 1rem; }
-      .hero-icon i { font-size: 22px; }
-      .hero-title { font-size: 19px; margin-bottom: 0.4rem; }
-      .hero-sub { font-size: 13px; margin-bottom: 1.5rem; max-width: 280px; line-height: 1.5; }
-      .start-btn { padding: 0.6rem 1.9rem; font-size: 14px; }
-
-      .dots-row { gap: 6px; margin-bottom: 1.25rem; }
-      .dot { width: 7px; height: 7px; }
-
-      .q-text { font-size: 13.5px; margin-bottom: 1rem; line-height: 1.4; }
-      .opt { font-size: 14px; padding: 0.55rem 0.75rem; margin-bottom: 0.5rem; gap: 8px; }
-      .back-btn { font-size: 13px; padding: 0.45rem 0.9rem; margin-top: 0.75rem; }
-
-      .result-badge { font-size: 12px; padding: 5px 14px; margin-bottom: 0.75rem; }
-      .result-type { font-size: 19px; margin-bottom: 0.5rem; }
-      .result-desc { font-size: 13px; margin-bottom: 1.25rem; line-height: 1.5; }
-
-      .score-section { padding: 0.9rem; margin-bottom: 1.1rem; }
-      .score-row { margin-bottom: 8px; gap: 8px; }
-      .score-name { font-size: 12px; width: 78px; }
-      .score-pct { font-size: 12px; width: 30px; }
-
-      .action-row { flex-direction: column; gap: 8px; }
-      .retry-btn, .share-btn { padding: 0.6rem; font-size: 13px; }
-
-      footer { font-size: 11px; padding: 0.75rem; }
-    }
-
-</style>
+  <link rel="stylesheet" href="style.css" />
+  
 </head>
 <body>
 
@@ -183,6 +25,7 @@
   <div class="screen" id="screen-quiz">
     <div class="quiz-wrap">
       <div class="dots-row" id="q-dots"></div>
+      <div class="q-title" id="q-title"></div>
       <div class="q-text" id="q-text"></div>
       <div id="q-options"></div>
       <button class="back-btn" id="back-btn" onclick="goBack()"><i class="ti ti-arrow-back-up"></i> Back</button>
@@ -248,20 +91,21 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="logic.js"></script>
 <script>
 const questions = [
     {
-      title: "You enter the shop. The menu board lights up with over 40 different flavours.",
-      text: "What's your first instinct?",
+      title: "Q1 — You enter the shop...",
+      text: "The menu board lights up with over 40 different flavours. What's your first instinct?",
       options: [
         { text: "\u201cLet's just pick something new!\u201d", scores: { doer: 2 } },
-        { text: "I already researched the menu before coming.", scores: { planner: 2 } },
+        { text: "Already researched the menu before coming.", scores: { planner: 2 } },
         { text: "Struggling to decide for 15 mins on what to order.", scores: { thinker: 2 } },
-        { text: "Immediately go for the same flavour you always order.", scores: { laser: 2 } }
+        { text: "Immediately lock onto the same flavour you always order.", scores: { laser: 2 } }
       ]
     },
     {
-      title: "Your queue suddenly becomes really long.",
+      title: "Q2 — The queue suddenly becomes really long.",
       text: "What do you do?",
       options: [
         { text: "Jump into whichever queue looks shortest.", scores: { doer: 2 } },
@@ -271,16 +115,16 @@ const questions = [
       ]
     },
     {
-      title: "",
-      text: "While waiting, you notice a magical \u201cCreate Your Own Flavour\u201d machine.",
+      title: "Q3 — While waiting...",
+      text: "You notice a magical \u201cCreate Your Own Flavour\u201d machine.",
       options: [
-        { text: "Think back to all the flavours you've enjoyed before.", scores: { thinker: 2 } },
         { text: "Lose track of time creating the perfect flavour.", scores: { laser: 2 } },
-        { text: "Spend ten minutes finding the perfect recipe before starting.", scores: { planner: 2 } }
+        { text: "Spend ten minutes finding the perfect recipe before starting.", scores: { planner: 2 } },
+        { text: "Think back to all the flavours you've enjoyed before.", scores: { thinker: 2 } }
       ]
     },
     {
-      title: "When you turn around, you see a magical red door",
+      title: "Q4 — When you turn around, you see a magical red door…",
       text: "What do you do?",
       options: [
         { text: "Ask around before opening the door.", scores: { thinker: 1, planner: 1 } },
@@ -290,7 +134,7 @@ const questions = [
       ]
     },
     {
-      title: "The red door opens to reveal a magical toppings station.",
+      title: "Q5 — The red door opens to reveal a magical toppings station.",
       text: "You see 2 routes you can take…",
       options: [
         { text: "Route A - The Safe Bet, familiar favourites.", scores: { planner: 2 } },
@@ -299,7 +143,7 @@ const questions = [
       ]
     },
     {
-      title: "Oh no!",
+      title: "Q6 — Oh no...",
       text: "Your favourite topping just ran out! What do you do?",
       options: [
         { text: "Pick another topping and keep moving.", scores: { follow: 2 } },
@@ -309,7 +153,7 @@ const questions = [
       ]
     },
     {
-      title: "You accidentally spill some toppings.",
+      title: "Q7 — You accidentally spill some toppings.",
       text: "What happens next?",
       options: [
         { text: "Feel really guilty and embarrassed for making a mess.", scores: { storm: 2 } },
@@ -318,7 +162,7 @@ const questions = [
       ]
     },
     {
-      title: "The cashier asks:",
+      title: "Q8 — The cashier asks...",
       text: "\u201cWould you like to try today's mystery topping?\u201d",
       options: [
         { text: "Nope, I'm happy with what I have!", scores: { follow: 1, laser: 1 } },
@@ -328,7 +172,7 @@ const questions = [
       ]
     },
     {
-      title: "After paying, you try to find a seat.",
+      title: "Q9 — After paying, you try to find a seat.",
       text: "The whole place is completely packed!",
       options: [
         { text: "Feel overwhelmed and frustrated that there are no seats.", scores: { storm: 2 } },
@@ -338,7 +182,7 @@ const questions = [
       ]
     },
     {
-      title: "Before you leave, the staff asks you…",
+      title: "Q10 — Before you leave, the staff asks you…",
       text: "\u201cWhat's the BEST part of building your froyo?\u201d",
       options: [
         { text: "Being spontaneous and trying something new!", scores: { doer: 2 } },
@@ -390,7 +234,7 @@ const questions = [
     }
   };
 
-  const styleOrder = ["planner", "thinker", "laser", "follow", "storm", "doer"];
+  const styleOrder = ["doer", "planner", "thinker", "laser", "follow", "storm"];
 
   // The max number of points each category could possibly earn across the
   // whole quiz (i.e. if every question's highest-scoring option for that
@@ -437,7 +281,8 @@ const questions = [
       d.className = 'dot' + (i < current ? ' done' : i === current ? ' active' : '');
       dots.appendChild(d);
     }
-    document.getElementById('q-text').textContent = q.title ? (q.title + ' ' + q.text) : q.text;
+    document.getElementById('q-title').textContent = q.title;
+    document.getElementById('q-text').textContent = q.text;
     const prevIdx = history[current];
     document.getElementById('q-options').innerHTML = q.options.map((o,i) =>
       `<button class="opt${prevIdx === i ? ' selected' : ''}" onclick="pick(${i})">${o.text}</button>`
