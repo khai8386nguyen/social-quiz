@@ -39,12 +39,6 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
     /* Home screen */
-    .hero-icon {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: #f7e8d6; display: flex; align-items: center;
-      justify-content: center; margin-bottom: 1.25rem;
-    }
-    .hero-icon i { font-size: 28px; color: #d9873e; }
     .hero-title { font-size: 22px; font-weight: 600; color: #57351f; text-align: center; margin-bottom: 0.5rem; }
     .hero-sub { font-size: 14px; color: #57351f; text-align: center; margin-bottom: 1.75rem; line-height: 1.6; max-width: 340px; }
     .start-btn {
@@ -95,11 +89,6 @@
       background: #c5651f; color: #fff; font-size: 12px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
     }
-    .opt-letter {
-      width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid currentColor;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 500; flex-shrink: 0; margin-top: 1px; opacity: 0.6;
-    }
     .back-btn {
       display: none; align-items: center; gap: 6px;
       margin-top: 1rem; padding: 0.5rem 1rem;
@@ -108,7 +97,6 @@
       cursor: pointer; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     .back-btn:hover { background: #f5f5f5; color: #57351f; }
-
 
     .action-row { display: flex; gap: 10px; width: 100%; }
     .retry-btn {
@@ -137,8 +125,6 @@
       .site { border-radius: 16px; }
       .screen { padding: 1.75rem 1.5rem; }
 
-      .hero-icon { width: 52px; height: 52px; margin-bottom: 1rem; }
-      .hero-icon i { font-size: 22px; }
       .hero-title { font-size: 19px; margin-bottom: 0.4rem; }
       .hero-sub { font-size: 13px; margin-bottom: 1.5rem; max-width: 280px; line-height: 1.5; }
       .start-btn { padding: 0.6rem 1.9rem; font-size: 14px; }
@@ -166,7 +152,7 @@
   <!-- Home -->
   <div class="screen active" id="screen-home">
     <img class="q-image" src="page%20images/Intro.png" alt="Welcome to Whimsy Swirls" />
-    <div class="hero-sub">Ordering a froyo should be simple, right? Well, not quite! Come along and discover your signature froyo flavour!</div>
+    <div class="hero-sub">The world's most magical frozen yogurt shop! Ordering a froyo should be simple... right? Well, not quite&hellip; Come along and navigate this adventure to discover your signature froyo flavour!</div>
     <button class="start-btn" onclick="startQuiz()">Start quiz &rarr;</button>
   </div>
 
@@ -320,42 +306,12 @@ const questions = [
   ];
 
   const resultData = {
-    doer: {
-      label: "The Doer",
-      flavour: "Rainbow Rush",
-      badgeBg: "#FAEEDA", badgeColor: "#633806",
-      desc: "You leap before you look, in the best way. Life's too short to overthink the toppings, so you dive in, try new things, and trust your gut. Bold, bright, and full of surprises, just like your flavour."
-    },
-    planner: {
-      label: "The Planner",
-      flavour: "Honey Granola Bliss",
-      badgeBg: "#F3E5D0", badgeColor: "#6B4423",
-      desc: "You like to know what you're getting into, and that's not a bad thing. You do your research, weigh your options, and build something reliably delicious. Wholesome, grounded, and always prepared."
-    },
-    thinker: {
-      label: "The Thinker",
-      flavour: "Matcha Bloom",
-      badgeBg: "#E1F5EE", badgeColor: "#085041",
-      desc: "You take your time because the details matter to you. Every decision gets turned over in your mind before you commit, and that thoughtfulness is your strength. Calm, considered, and quietly deep."
-    },
-    laser: {
-      label: "The Laser",
-      flavour: "Triple Chocolate Crunch",
-      badgeBg: "#E8DED9", badgeColor: "#4A2E1F",
-      desc: "Once you're locked in, nothing else exists. You get so absorbed in what you're doing that the world fades into the background. Rich, intense, and impossible to distract."
-    },
-    follow: {
-      label: "Follow Through",
-      flavour: "Salted Caramel Crunch",
-      badgeBg: "#EEEDFE", badgeColor: "#3C3489",
-      desc: "You don't need everything to go perfectly, you just need to keep moving. When plans change, you adapt, adjust, and get it done. Steady, dependable, with just the right amount of edge."
-    },
-    storm: {
-      label: "The Storm",
-      flavour: "Berry Burst",
-      badgeBg: "#FCE4EC", badgeColor: "#8E2450",
-      desc: "You feel things fully, and you're not afraid to show it. Frustration, excitement, joy, it all comes through in bursts of energy. Vivid, expressive, and impossible to ignore."
-    }
+    doer: { flavour: "Rainbow Rush" },
+    planner: { flavour: "Honey Granola Bliss" },
+    thinker: { flavour: "Matcha Bloom" },
+    laser: { flavour: "Triple Chocolate Crunch" },
+    follow: { flavour: "Salted Caramel Crunch" },
+    storm: { flavour: "Berry Burst" }
   };
 
   const styleOrder = ["planner", "thinker", "laser", "follow", "storm", "doer"];
@@ -367,7 +323,7 @@ const questions = [
     doer: "flavour%20cards/rainbow_rush.jpeg",
     planner: "flavour%20cards/honey_bliss.jpeg",
     thinker: "flavour%20cards/matcha_bloom.jpeg",
-    laser: "flavour%20cards/chocolate_crunch.jpeg",
+    laser: "flavour%20cards/triple_chocolate_crunch.jpeg",
     follow: "flavour%20cards/salted_caramel_crunch.jpeg",
     storm: "flavour%20cards/berry_burst.jpeg"
   };
@@ -395,7 +351,7 @@ const questions = [
 
   const maxScores = computeMaxScores();
 
-  let current = 0, scores = {}, selected = null, history = [], lastWinner = null;
+  let current = 0, scores = {}, history = [], lastWinner = null;
 
   function resetScores() {
     scores = { doer: 0, planner: 0, thinker: 0, laser: 0, follow: 0, storm: 0 };
@@ -425,11 +381,9 @@ const questions = [
       `<button class="opt${prevIdx === i ? ' selected' : ''}" onclick="pick(${i})">${o.text}</button>`
     ).join('');
     document.getElementById('back-btn').style.display = current > 0 ? 'flex' : 'none';
-    selected = null;
   }
 
   function pick(idx) {
-    selected = idx;
     document.querySelectorAll('.opt').forEach((b,i) => b.classList.toggle('selected', i===idx));
     const o = questions[current].options[idx];
     for (const key in o.scores) { scores[key] += o.scores[key]; }
@@ -497,6 +451,5 @@ const questions = [
   }
 
 </script>
-
 </body>
 </html>
