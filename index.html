@@ -35,7 +35,7 @@
     }
 
     .screen { display: none; padding: 2.5rem 2rem; animation: fadeIn 0.3s ease; flex: 1; }
-    .screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .screen.active { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
     /* Home screen */
@@ -65,7 +65,7 @@
     .dot.done { background: #efc98a; }
     .dot.active { background: #e9a43b; transform: scale(1.3); }
 
-    .q-text { font-size: 15px; font-weight: 500; color: #57351f; margin-bottom: 1.25rem; line-height: 1.45; }
+    .q-text { font-size: 17px; font-weight: 600; color: #57351f; margin-bottom: 1.25rem; line-height: 1.5; }
 
     .q-image {
       width: 100%; height: auto; aspect-ratio: 1447 / 1087;
@@ -74,16 +74,26 @@
     }
 
     .opt {
-      display: flex; align-items: flex-start; gap: 12px;
-      width: 100%; padding: 0.625rem 0.875rem; margin-bottom: 0.6rem;
-      border-radius: 12px; border: 0.5px solid #ddd;
-      background: #fff; color: #57351f; font-size: 15px;
+      display: flex; align-items: center; gap: 12px;
+      width: 100%; padding: 0.8rem 2.5rem 0.8rem 1rem; margin-bottom: 0.65rem;
+      border-radius: 12px; border: 1px solid #ddd;
+      background: #fff; color: #57351f; font-size: 14px;
       cursor: pointer; text-align: left; line-height: 1.4;
       transition: border-color 0.15s, background 0.15s;
       font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      position: relative;
     }
     .opt:hover { border-color: #e9a43b; background: #f7e8d6; color: #57351f; }
-    .opt.selected { border: 2px solid #e9a43b; background: #f7e8d6; color: #57351f; font-weight: 500; }
+    .opt.selected {
+      border: 2px solid #c5651f; background: #fdf1e0; color: #57351f;
+      font-weight: 600; padding: calc(0.8rem - 1px) 2.5rem calc(0.8rem - 1px) calc(1rem - 1px);
+    }
+    .opt.selected::after {
+      content: "\2713"; position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%); width: 20px; height: 20px; border-radius: 50%;
+      background: #c5651f; color: #fff; font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
     .opt-letter {
       width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid currentColor;
       display: flex; align-items: center; justify-content: center;
@@ -141,9 +151,9 @@
 
     /* Mobile */
     @media (max-width: 480px) {
-      body { padding: 1.25rem 0.75rem; }
+      body { padding: 1.5rem 1rem; }
       .site { border-radius: 16px; }
-      .screen { padding: 1.5rem 1.25rem; }
+      .screen { padding: 1.75rem 1.5rem; }
 
       .hero-icon { width: 52px; height: 52px; margin-bottom: 1rem; }
       .hero-icon i { font-size: 22px; }
@@ -154,9 +164,10 @@
       .dots-row { gap: 6px; margin-bottom: 1.25rem; }
       .dot { width: 7px; height: 7px; }
 
-      .q-text { font-size: 13.5px; margin-bottom: 1rem; line-height: 1.4; }
+      .q-text { font-size: 16px; margin-bottom: 1rem; line-height: 1.45; }
       .q-image { margin-bottom: 1rem; border-radius: 10px; }
-      .opt { font-size: 14px; padding: 0.55rem 0.75rem; margin-bottom: 0.5rem; gap: 8px; }
+      .opt { font-size: 14px; padding: 0.75rem 2.25rem 0.75rem 0.9rem; margin-bottom: 0.5rem; gap: 8px; }
+      .opt.selected { padding: calc(0.75rem - 1px) 2.25rem calc(0.75rem - 1px) calc(0.9rem - 1px); }
       .back-btn { font-size: 13px; padding: 0.45rem 0.9rem; margin-top: 0.75rem; }
 
       .result-badge { font-size: 12px; padding: 5px 14px; margin-bottom: 0.75rem; }
@@ -267,10 +278,10 @@ const questions = [
       text: "What's your first instinct?",
       image: "page%20images/01.png",
       options: [
-        { text: "Immediately go for the same flavour you always order", scores: { laser: 2 } }
-        { text: "\u201cLet's pick something new!\u201d", scores: { doer: 2 } },
-        { text: "\u201cI already researched the menu before this\u201d", scores: { planner: 2 } },
-        { text: "\u201cGimme a while, maybe 5 minutes, to decide\u201d", scores: { thinker: 2 } },
+        { text: "\u201cLet's just pick something new!\u201d", scores: { doer: 2 } },
+        { text: "I already researched the menu before coming.", scores: { planner: 2 } },
+        { text: "Struggling to decide for 15 mins on what to order.", scores: { thinker: 2 } },
+        { text: "Immediately go for the same flavour you always order.", scores: { laser: 2 } }
       ]
     },
     {
@@ -278,10 +289,10 @@ const questions = [
       text: "What do you do?",
       image: "page%20images/02.png",
       options: [
-        { text: "Jump into whichever looks shortest", scores: { doer: 2 } },
-        { text: "Stay in the same queue no matter what", scores: { follow: 2 } },
-        { text: "Keep switching to the \u201cfaster\u201d queue", scores: { thinker: 2 } },
-        { text: "\u201cURGHHHHHH\u201d", scores: { storm: 2 } }
+        { text: "Jump into whichever queue looks shortest.", scores: { doer: 2 } },
+        { text: "Stay in the same queue no matter what.", scores: { follow: 2 } },
+        { text: "Keep switching to the \u201cfaster\u201d queue.", scores: { thinker: 2 } },
+        { text: "Notice yourself getting impatient.", scores: { storm: 2 } }
       ]
     },
     {
@@ -289,9 +300,9 @@ const questions = [
       text: "While waiting, you notice a magical \u201cCreate Your Own Flavour\u201d machine.",
       image: "page%20images/03.png",
       options: [
-        { text: "Think back to all the flavours you've enjoyed before", scores: { thinker: 2 } },
-        { text: "Lose track of time creating the perfect flavour", scores: { laser: 2 } },
-        { text: "Spend ten minutes finding the perfect recipe before starting", scores: { planner: 2 } }
+        { text: "Think back to all the flavours you've enjoyed before.", scores: { thinker: 2 } },
+        { text: "Lose track of time creating the perfect flavour.", scores: { laser: 2 } },
+        { text: "Spend ten minutes finding the perfect recipe before starting.", scores: { planner: 2 } }
       ]
     },
     {
@@ -299,9 +310,9 @@ const questions = [
       text: "What do you do?",
       image: "page%20images/04.png",
       options: [
-        { text: "Ask around before opening the door", scores: { thinker: 1, planner: 1 } },
-        { text: "Decide to just open the door and see for yourself", scores: { doer: 2 } },
-        { text: "Ignore it and head to the cashier", scores: { follow: 2 } },
+        { text: "Ask around before opening the door.", scores: { thinker: 1, planner: 1 } },
+        { text: "Decide to just open the door and see for yourself.", scores: { doer: 2 } },
+        { text: "Ignore it and head to the cashier.", scores: { follow: 2 } },
         { text: "Feeling anxious, \u201cI wonder what might be behind it…\u201d", scores: { storm: 2 } }
       ]
     },
@@ -310,9 +321,9 @@ const questions = [
       text: "You see 2 routes you can take…",
       image: "page%20images/05.png",
       options: [
-        { text: "Route A - The Safe Bet, familiar favourites", scores: { planner: 2 } },
+        { text: "Route A - The Safe Bet, familiar favourites.", scores: { planner: 2 } },
         { text: "Route B - Mystery Toppings, surprise me!", scores: { doer: 2 } },
-        { text: "\u201cIs there a third option?\\u201d", scores: { thinker: 2 } }
+        { text: "Stuck at the crossroads because you can't decide.", scores: { thinker: 2 } }
       ]
     },
     {
@@ -320,7 +331,7 @@ const questions = [
       text: "Your favourite topping just ran out! What do you do?",
       image: "page%20images/06.png",
       options: [
-        { text: "Just pick another topping. It's not a big deal.", scores: { follow: 2 } },
+        { text: "Pick another topping and keep moving.", scores: { follow: 2 } },
         { text: "Feeling disappointed, as it was your favourite.", scores: { storm: 1, laser: 1 } },
         { text: "\u201cThat wasn't part of the plan…\u201d Finds the closest substitute.", scores: { planner: 2 } },
         { text: "Take so long comparing alternatives that multiple people get their froyo first.", scores: { thinker: 2 } }
@@ -338,13 +349,13 @@ const questions = [
     },
     {
       title: "The cashier asks:",
-      text: "\u201cWould you like to sample today's mystery topping?\u201d",
+      text: "\u201cWould you like to try today's mystery topping?\u201d",
       image: "page%20images/08.png",
       options: [
         { text: "Nope, I'm happy with what I have!", scores: { follow: 1, laser: 1 } },
-        { text: "Oh! Mystery! Maybe I'll switch to that!", scores: { storm: 1, doer: 1 } },
-        { text: "Try it. Ask a lot of questions. Seriously consider whether to switch", scores: { thinker: 2 } },
-        { text: "Nah, I don't like surprises. What if I don't like it?", scores: { planner: 2 } }
+        { text: "Yes! It sounds exciting.", scores: { storm: 1, doer: 1 } },
+        { text: "Ask fifteen follow-up questions about the topping before deciding.", scores: { thinker: 2 } },
+        { text: "Nope, I don't like being surprised. What if I don't like it?", scores: { planner: 2 } }
       ]
     },
     {
@@ -352,10 +363,10 @@ const questions = [
       text: "The whole place is completely packed!",
       image: "page%20images/09.png",
       options: [
-        { text: "Feel overwhelmed and frustrated that there are no seats", scores: { storm: 2 } },
-        { text: "Choose one seat closest to the window and wait for it", scores: { laser: 2 } },
-        { text: "Look around before deciding whether to wait or head home", scores: { planner: 2 } },
-        { text: "Leave the store and walk home while eating", scores: { follow: 1, doer: 1 } }
+        { text: "Feel overwhelmed and frustrated that there are no seats.", scores: { storm: 2 } },
+        { text: "Choose one seat closest to the window and wait for it.", scores: { laser: 2 } },
+        { text: "Look around before deciding whether to wait or head home.", scores: { planner: 2 } },
+        { text: "Leave the store and walk home while eating.", scores: { follow: 1, doer: 1 } }
       ]
     },
     {
