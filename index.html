@@ -437,27 +437,24 @@ const questions = [
   function restart() { current = 0; resetScores(); history = []; renderQ(); show('screen-quiz'); }
 
   function downloadResult() {
-    const target = document.getElementById('result-capture');
-    const flavour = lastWinner ? resultData[lastWinner].flavour : 'result';
-    const filename = 'whimsy-swirls-' + flavour.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.png';
+  const img = document.getElementById('result-image');
+  const flavour = lastWinner ? resultData[lastWinner].flavour : 'result';
+  const filename = 'whimsy-swirls-' + flavour.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.jpeg';
 
-    html2canvas(target, { backgroundColor: '#ffffff', scale: 2 }).then(canvas => {
-      const link = document.createElement('a');
-      link.download = filename;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
+  const link = document.createElement('a');
+  link.href = img.src;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
-      const t = document.getElementById('share-toast');
-      t.style.display = 'block';
-      setTimeout(() => t.style.display = 'none', 2500);
-    }).catch(() => {
-      const t = document.getElementById('share-toast');
-      t.textContent = 'Couldn\u2019t generate image — try a screenshot instead.';
-      t.style.display = 'block';
-      setTimeout(() => t.style.display = 'none', 3000);
-    });
-  }
+  const t = document.getElementById('share-toast');
+  t.textContent = '✓ Image downloaded!';
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 2500);
+}
 
 </script>
+
 </body>
 </html>
