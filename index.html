@@ -254,17 +254,17 @@
 <script>
 const questions = [
     {
-      title: "Q1 — You enter the shop...",
-      text: "The menu board lights up with over 40 different flavours. What's your first instinct?",
+      text: "You enter the shop. The menu board lights up with over 40 different flavours.",
+      text: "What's your first instinct?",
       options: [
         { text: "\u201cLet's just pick something new!\u201d", scores: { doer: 2 } },
-        { text: "Already researched the menu before coming.", scores: { planner: 2 } },
+        { text: "I already researched the menu before coming.", scores: { planner: 2 } },
         { text: "Struggling to decide for 15 mins on what to order.", scores: { thinker: 2 } },
-        { text: "Immediately lock onto the same flavour you always order.", scores: { laser: 2 } }
+        { text: "Immediately go for the same flavour you always order.", scores: { laser: 2 } }
       ]
     },
     {
-      title: "Q2 — The queue suddenly becomes really long.",
+      text: "Your queue suddenly becomes really long.",
       text: "What do you do?",
       options: [
         { text: "Jump into whichever queue looks shortest.", scores: { doer: 2 } },
@@ -274,16 +274,15 @@ const questions = [
       ]
     },
     {
-      title: "Q3 — While waiting...",
-      text: "You notice a magical \u201cCreate Your Own Flavour\u201d machine.",
+      text: "While waiting, you notice a magical \u201cCreate Your Own Flavour\u201d machine.",
       options: [
+        { text: "Think back to all the flavours you've enjoyed before.", scores: { thinker: 2 } }
         { text: "Lose track of time creating the perfect flavour.", scores: { laser: 2 } },
         { text: "Spend ten minutes finding the perfect recipe before starting.", scores: { planner: 2 } },
-        { text: "Think back to all the flavours you've enjoyed before.", scores: { thinker: 2 } }
       ]
     },
     {
-      title: "Q4 — When you turn around, you see a magical red door…",
+      text: "When you turn around, you see a magical red door",
       text: "What do you do?",
       options: [
         { text: "Ask around before opening the door.", scores: { thinker: 1, planner: 1 } },
@@ -293,7 +292,7 @@ const questions = [
       ]
     },
     {
-      title: "Q5 — The red door opens to reveal a magical toppings station.",
+      text: "The red door opens to reveal a magical toppings station.",
       text: "You see 2 routes you can take…",
       options: [
         { text: "Route A - The Safe Bet, familiar favourites.", scores: { planner: 2 } },
@@ -302,7 +301,7 @@ const questions = [
       ]
     },
     {
-      title: "Q6 — Oh no...",
+      text: "Oh no!",
       text: "Your favourite topping just ran out! What do you do?",
       options: [
         { text: "Pick another topping and keep moving.", scores: { follow: 2 } },
@@ -312,7 +311,7 @@ const questions = [
       ]
     },
     {
-      title: "Q7 — You accidentally spill some toppings.",
+      text: "You accidentally spill some toppings.",
       text: "What happens next?",
       options: [
         { text: "Feel really guilty and embarrassed for making a mess.", scores: { storm: 2 } },
@@ -321,7 +320,7 @@ const questions = [
       ]
     },
     {
-      title: "Q8 — The cashier asks...",
+      text: "The cashier asks:",
       text: "\u201cWould you like to try today's mystery topping?\u201d",
       options: [
         { text: "Nope, I'm happy with what I have!", scores: { follow: 1, laser: 1 } },
@@ -331,7 +330,7 @@ const questions = [
       ]
     },
     {
-      title: "Q9 — After paying, you try to find a seat.",
+      text: "After paying, you try to find a seat.",
       text: "The whole place is completely packed!",
       options: [
         { text: "Feel overwhelmed and frustrated that there are no seats.", scores: { storm: 2 } },
@@ -341,7 +340,7 @@ const questions = [
       ]
     },
     {
-      title: "Q10 — Before you leave, the staff asks you…",
+      text: "Before you leave, the staff asks you…",
       text: "\u201cWhat's the BEST part of building your froyo?\u201d",
       options: [
         { text: "Being spontaneous and trying something new!", scores: { doer: 2 } },
@@ -393,7 +392,7 @@ const questions = [
     }
   };
 
-  const styleOrder = ["doer", "planner", "thinker", "laser", "follow", "storm"];
+  const styleOrder = ["planner", "thinker", "laser", "follow", "storm", "doer"];
 
   // The max number of points each category could possibly earn across the
   // whole quiz (i.e. if every question's highest-scoring option for that
