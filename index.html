@@ -203,112 +203,112 @@
 <script>
 const questions = [
     {
-      title: "You enter the shop. The menu board lights up with over 40 different flavours.",
-      text: "What's your first instinct?",
+      title: "",
+      text: "You enter the shop and the menu board lights up with over 30 different flavours. What's your first instinct?",
       image: "page%20images/01.png",
       options: [
-        { text: "\u201cLet's just pick something new!\u201d", scores: { doer: 2 } },
-        { text: "I already researched the menu before coming.", scores: { planner: 2 } },
-        { text: "Struggling to decide for 15 mins on what to order.", scores: { thinker: 2 } },
-        { text: "Immediately go for the same flavour you always order.", scores: { laser: 2 } }
-      ]
-    },
-    {
-      title: "Your queue suddenly becomes really long.",
-      text: "What do you do?",
-      image: "page%20images/02.png",
-      options: [
-        { text: "Jump into whichever queue looks shortest.", scores: { doer: 2 } },
-        { text: "Stay in the same queue no matter what.", scores: { follow: 2 } },
-        { text: "Keep switching to the \u201cfaster\u201d queue.", scores: { thinker: 2 } },
-        { text: "Notice yourself getting impatient.", scores: { storm: 2 } }
+        { text: "Let's just pick something new!", scores: { doer: 2 } },
+        { text: "Already looked up the menu online.", scores: { planner: 2 } },
+        { text: "Immediately start weighing every flavour against every other.", scores: { thinker: 2 } },
+        { text: "Head straight for your usual flavour.", scores: { laser: 2 } }
       ]
     },
     {
       title: "",
-      text: "While waiting, you notice a magical \u201cCreate Your Own Flavour\u201d machine.",
-      image: "page%20images/03.png",
+      text: "You join the queue to order, only to find it's much longer than expected. What do you do?",
+      image: "page%20images/02.png",
       options: [
-        { text: "Think back to all the flavours you've enjoyed before.", scores: { thinker: 2 } },
-        { text: "Lose track of time creating the perfect flavour.", scores: { laser: 2 } },
-        { text: "Spend ten minutes finding the perfect recipe before starting.", scores: { planner: 2 } }
+        { text: "No issue, you just go with the flow.", scores: { doer: 2 } },
+        { text: "You're not leaving this spot till you've got your froyo.", scores: { follow: 2 } },
+        { text: "Count the people ahead to estimate how long it'll take.", scores: { thinker: 2 } },
+        { text: "Checking the time every ten seconds.", scores: { storm: 2 } }
       ]
     },
     {
-      title: "When you turn around, you see a magical red door",
-      text: "What do you do?",
+      title: "",
+      text: "While waiting, you start daydreaming about creating your own flavour\u2026",
+      image: "page%20images/03.png",
+      options: [
+        { text: "You'd lose track of time perfecting it.", scores: { laser: 2 } },
+        { text: "You'd spend ages researching the 'perfect' combo first before starting.", scores: { planner: 2 } },
+        { text: "You'd replay every flavour you've ever loved, weighing them all.", scores: { thinker: 2 } }
+      ]
+    },
+    {
+      title: "",
+      text: "All of a sudden, a mysterious red door at the side catches your eye.",
       image: "page%20images/04.png",
       options: [
         { text: "Ask around before opening the door.", scores: { thinker: 1, planner: 1 } },
-        { text: "Decide to just open the door and see for yourself.", scores: { doer: 2 } },
-        { text: "Ignore it and head to the cashier.", scores: { follow: 2 } },
-        { text: "Feeling anxious, \u201cI wonder what might be behind it…\u201d", scores: { storm: 2 } }
+        { text: "Just open and check it out.", scores: { doer: 2 } },
+        { text: "Stay in queue, ignoring the door.", scores: { follow: 2 } },
+        { text: "Feel a flicker of anxiety about what's behind it.", scores: { storm: 2 } }
       ]
     },
     {
-      title: "The red door opens to reveal a magical toppings station.",
-      text: "You see 2 routes you can take…",
+      title: "",
+      text: "The red door pops open on its own to reveal a magical toppings station. You see 2 routes you can take\u2026",
       image: "page%20images/05.png",
       options: [
-        { text: "Route A - The Safe Bet, familiar favourites.", scores: { planner: 2 } },
+        { text: "Route A - The Safe Bet, for familiar favourites.", scores: { planner: 2 } },
         { text: "Route B - Mystery Toppings, surprise me!", scores: { doer: 2 } },
-        { text: "Stuck at the crossroads because you can't decide.", scores: { thinker: 2 } }
+        { text: "Frozen at the crossroads, can't decide.", scores: { thinker: 2 } }
       ]
     },
     {
-      title: "Oh no!",
-      text: "Your favourite topping just ran out! What do you do?",
+      title: "",
+      text: "Oh no, your favourite topping just ran out!",
       image: "page%20images/06.png",
       options: [
         { text: "Pick another topping and keep moving.", scores: { follow: 2 } },
-        { text: "Feeling disappointed, as it was your favourite.", scores: { storm: 1, laser: 1 } },
-        { text: "\u201cThat wasn't part of the plan…\u201d Finds the closest substitute.", scores: { planner: 2 } },
-        { text: "Take so long comparing alternatives that multiple people get their froyo first.", scores: { thinker: 2 } }
+        { text: "Feeling disappointed as it was your favourite.", scores: { storm: 2, laser: 2 } },
+        { text: "\u201cThat wasn't part of the plan\u2026\u201d but finds the closest substitute.", scores: { planner: 2 } },
+        { text: "Take so long weighing the alternatives that others move past you.", scores: { thinker: 2 } }
       ]
     },
     {
-      title: "You accidentally spill some toppings.",
-      text: "What happens next?",
+      title: "",
+      text: "You accidentally spill some toppings.",
       image: "page%20images/07.png",
       options: [
         { text: "Feel really guilty and embarrassed for making a mess.", scores: { storm: 2 } },
-        { text: "You don't notice the spill because you're so fixated on reaching the cashier.", scores: { laser: 2 } },
+        { text: "So locked in on getting this done, you don't even notice the spill.", scores: { laser: 2 } },
         { text: "Clean it up and keep going.", scores: { follow: 2 } }
       ]
     },
     {
-      title: "The cashier asks:",
-      text: "\u201cWould you like to try today's mystery topping?\u201d",
+      title: "",
+      text: "The cashier asks, \u201cWould you like to add today's mystery drizzle?\u201d",
       image: "page%20images/08.png",
       options: [
-        { text: "Nope, I'm happy with what I have!", scores: { follow: 1, laser: 1 } },
+        { text: "Nope, I'm happy with what I have!", scores: { follow: 2, laser: 2 } },
         { text: "Yes! It sounds exciting.", scores: { storm: 1, doer: 1 } },
-        { text: "Ask fifteen follow-up questions about the topping before deciding.", scores: { thinker: 2 } },
-        { text: "Nope, I don't like being surprised. What if I don't like it?", scores: { planner: 2 } }
+        { text: "Ask fifteen follow-up questions about the drizzle before deciding.", scores: { thinker: 2 } },
+        { text: "Nope, surprises stress me out.", scores: { planner: 2 } }
       ]
     },
     {
-      title: "After paying, you try to find a seat.",
-      text: "The whole place is completely packed!",
+      title: "",
+      text: "After paying, you try to find a seat but the whole place is completely packed!",
       image: "page%20images/09.png",
       options: [
-        { text: "Feel overwhelmed and frustrated that there are no seats.", scores: { storm: 2 } },
-        { text: "Choose one seat closest to the window and wait for it.", scores: { laser: 2 } },
-        { text: "Look around before deciding whether to wait or head home.", scores: { planner: 2 } },
+        { text: "Feel overwhelmed and frustrated.", scores: { storm: 2 } },
+        { text: "Pick a spot and hover there till it clears.", scores: { laser: 2 } },
+        { text: "Give it 10 minutes for a seat, then move to plan B.", scores: { planner: 2 } },
         { text: "Leave the store and walk home while eating.", scores: { follow: 1, doer: 1 } }
       ]
     },
     {
-      title: "Before you leave, the staff asks you…",
-      text: "\u201cWhat's the BEST part of building your froyo?\u201d",
+      title: "",
+      text: "On your way out, the staff asks, \u201cWhat's the BEST part of your froyo journey today?\u201d",
       image: "page%20images/10.png",
       options: [
         { text: "Being spontaneous and trying something new!", scores: { doer: 2 } },
         { text: "Discovering what I like in my froyo!", scores: { thinker: 2 } },
-        { text: "Planning and crafting out a perfect combo of yogurt and topping!", scores: { planner: 2 } },
-        { text: "Finally seeing it all come together makes it worth it!", scores: { follow: 2 } },
-        { text: "How happy it made me feel!", scores: { storm: 2 } },
-        { text: "I loved getting completely absorbed in the process!", scores: { laser: 2 } }
+        { text: "Thinking through the perfect combo before ordering!", scores: { planner: 2 } },
+        { text: "Finally getting to enjoy it makes it all worth it!", scores: { follow: 2 } },
+        { text: "How happy eating it made me feel!", scores: { storm: 2 } },
+        { text: "Just tuning everything else out and focusing on my froyo.", scores: { laser: 2 } }
       ]
     }
   ];
@@ -328,12 +328,12 @@ const questions = [
   // Best-guess filenames based on the flavour names above — update these to
   // match your actual uploaded filenames if they differ.
   const flavourImages = {
-    doer: "flavour%20cards/rainbow_rush.jpeg",
-    planner: "flavour%20cards/honey_bliss.jpeg",
-    thinker: "flavour%20cards/matcha_bloom.jpeg",
-    laser: "flavour%20cards/choco_fudge.jpeg",
-    follow: "flavour%20cards/caramel_crunch.jpeg",
-    storm: "flavour%20cards/berry_bust.jpeg"
+    doer: "final_flavous/rainbow_rush.png",
+    planner: "final_flavous/honey_bliss.png",
+    thinker: "final_flavous/matcha_bloom.png",
+    laser: "final_flavous/choco_fudge.png",
+    follow: "final_flavous/caramel_crunch.png",
+    storm: "final_flavous/berry_bust.png"
   };
 
   // The max number of points each category could possibly earn across the
@@ -455,6 +455,5 @@ const questions = [
 }
 
 </script>
-
 </body>
 </html>
