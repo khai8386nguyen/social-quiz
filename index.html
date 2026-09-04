@@ -19,7 +19,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem 1rem;
+      padding: 24px 16px;
     }
 
     .site {
@@ -34,15 +34,20 @@
       flex-direction: column;
     }
 
-    .screen { display: none; padding: 2.5rem 2rem; animation: fadeIn 0.3s ease; flex: 1; }
+    .screen { display: none; padding: 32px; animation: fadeIn 0.3s ease; flex: 1; }
     .screen.active { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
     /* Home screen */
-    .hero-title { font-size: 22px; font-weight: 600; color: #57351f; text-align: center; margin-bottom: 0.5rem; }
-    .hero-sub { font-size: 14px; color: #57351f; text-align: center; margin-bottom: 1.75rem; line-height: 1.6; max-width: 340px; }
+    .hero-title { font-size: 22px; font-weight: 600; color: #57351f; text-align: center; margin-bottom: 8px; }
+    .hero-sub {
+      max-width: 340px;
+      font-size: 15px; font-weight: 400; color: #57351f;
+      text-align: center; line-height: 1.6; letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
     .start-btn {
-      padding: 0.7rem 2.25rem; background: #e9a43b; color: #57351f;
+      padding: 12px 32px; background: #e9a43b; color: #57351f;
       border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer;
       font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
@@ -51,7 +56,7 @@
     /* Quiz screen */
     .quiz-wrap { width: 100%; }
 
-    .dots-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 1.75rem; flex-wrap: wrap; }
+    .dots-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
     .dot {
       width: 10px; height: 10px; border-radius: 50%;
       background: #e5e5e5;
@@ -60,11 +65,24 @@
     .dot.done { background: #efc98a; }
     .dot.active { background: #e9a43b; transform: scale(1.3); }
 
-    .q-text { font-size: 17px; font-weight: 600; color: #57351f; margin-bottom: 1.25rem; line-height: 1.5; }
+    /* Scene-setting line: secondary, recedes visually so the question is the entry point */
+    .q-scene {
+      width: 100%; max-width: 60ch;
+      font-size: 15px; font-weight: 400; color: #8a6a4d;
+      line-height: 1.6; letter-spacing: 0.02em; text-align: left;
+      margin-bottom: 8px;
+    }
+    /* The actual question/prompt: primary hierarchy element on the screen */
+    .q-question {
+      width: 100%; max-width: 60ch;
+      font-size: 20px; font-weight: 600; color: #57351f;
+      line-height: 1.6; letter-spacing: 0.02em; text-align: left;
+      margin-bottom: 16px;
+    }
 
     .q-image {
       width: 100%; height: auto; aspect-ratio: 1447 / 1087;
-      object-fit: cover; border-radius: 12px; margin-bottom: 1.25rem;
+      object-fit: cover; border-radius: 12px; margin-bottom: 16px;
       background: #f7e8d6;
     }
 
@@ -77,81 +95,75 @@
 
     .opt {
       display: flex; align-items: center; gap: 12px;
-      width: 100%; padding: 0.8rem 2.5rem 0.8rem 1rem; margin-bottom: 0.65rem;
+      width: 100%; padding: 12px 40px 12px 16px; margin-bottom: 12px;
       border-radius: 12px; border: 1px solid #ddd;
-      background: #fff; color: #57351f; font-size: 14px;
-      cursor: pointer; text-align: left; line-height: 1.4;
+      background: #fff; color: #57351f; font-size: 16px; font-weight: 400;
+      cursor: pointer; text-align: left; line-height: 1.6; letter-spacing: 0.02em;
       transition: border-color 0.15s, background 0.15s;
       font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       position: relative;
     }
-    /* 
-    .opt:hover { border-color: #e9a43b; background: #f7e8d6; color: #57351f; }
+    /* .opt:hover { border-color: #e9a43b; background: #f7e8d6; color: #57351f; } */
     .opt.selected {
       border: 2px solid #c5651f; background: #fdf1e0; color: #57351f;
-      font-weight: 600; padding: calc(0.8rem - 1px) 2.5rem calc(0.8rem - 1px) calc(1rem - 1px);
-    */ 
+      font-weight: 600; padding: 11px 39px 11px 15px;
     }
     .opt.selected::after {
       content: "\2713"; position: absolute; right: 14px; top: 50%;
       transform: translateY(-50%); width: 20px; height: 20px; border-radius: 50%;
-      background: #c5651f; color: #fff; font-size: 12px; font-weight: 700;
+      background: #c5651f; color: #fff; font-size: 12px; font-weight: 600;
       display: flex; align-items: center; justify-content: center;
     }
     .back-btn {
       display: none; align-items: center; gap: 6px;
-      margin-top: 1rem; padding: 0.5rem 1rem;
+      margin-top: 16px; padding: 8px 16px;
       border-radius: 8px; border: 0.5px solid #ddd;
       background: #fff; color: #57351f; font-size: 14px;
       cursor: pointer; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    /* .back-btn:hover { background: #f5f5f5; color: #57351f; } */ 
+    /* .back-btn:hover { background: #f5f5f5; color: #57351f; } */
 
-    .action-row { display: flex; gap: 10px; width: 100%; }
+    .action-row { display: flex; gap: 12px; width: 100%; }
     .retry-btn {
-      flex: 1; padding: 0.7rem; border-radius: 8px;
+      flex: 1; padding: 12px; border-radius: 8px;
       border: 0.5px solid #ccc; background: #fff; color: #57351f;
       font-size: 14px; cursor: pointer; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-    /* .retry-btn:hover { background: #f5f5f5; }*/
+    /* .retry-btn:hover { background: #f5f5f5; } */
     .share-btn {
-      flex: 1; padding: 0.7rem; border-radius: 8px;
+      flex: 1; padding: 12px; border-radius: 8px;
       border: none; background: #e9a43b; color: #57351f;
       font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     /* .share-btn:hover { background: #d9873e; } */
-    .share-toast { font-size: 13px; color: #0F6E56; margin-top: 0.75rem; text-align: center; display: none; }
+    .share-toast { font-size: 14px; color: #0F6E56; margin-top: 12px; text-align: center; display: none; }
 
     footer {
       text-align: center; font-size: 12px; color: #57351f;
-      padding: 1rem; border-top: 0.5px solid #eee;
+      padding: 16px; border-top: 0.5px solid #eee;
       width: 100%;
     }
 
     /* Mobile */
     @media (max-width: 480px) {
-      body { padding: 1.5rem 1rem; }
-      .site { border-radius: 16px; }
-      .screen { padding: 1.75rem 1.5rem; }
+      .screen { padding: 24px; }
 
-      .hero-title { font-size: 19px; margin-bottom: 0.4rem; }
-      .hero-sub { font-size: 13px; margin-bottom: 1.5rem; max-width: 280px; line-height: 1.5; }
-      .start-btn { padding: 0.6rem 1.9rem; font-size: 14px; }
+      .hero-title { font-size: 19px; }
+      .hero-sub { font-size: 14px; max-width: 280px; }
+      .start-btn { padding: 12px 24px; font-size: 14px; }
 
-      .dots-row { gap: 6px; margin-bottom: 1.25rem; }
-      .dot { width: 7px; height: 7px; }
+      .q-scene { font-size: 14px; }
+      .q-question { font-size: 19px; }
 
-      .q-text { font-size: 16px; margin-bottom: 1rem; line-height: 1.45; }
-      .q-image { margin-bottom: 1rem; border-radius: 10px; }
+      .q-image { margin-bottom: 16px; }
       .result-card-image { max-width: 240px; border-radius: 10px; }
-      .opt { font-size: 14px; padding: 0.75rem 2.25rem 0.75rem 0.9rem; margin-bottom: 0.5rem; gap: 8px; }
-      .opt.selected { padding: calc(0.75rem - 1px) 2.25rem calc(0.75rem - 1px) calc(0.9rem - 1px); }
-      .back-btn { font-size: 13px; padding: 0.45rem 0.9rem; margin-top: 0.75rem; }
 
-      .action-row { flex-direction: column; gap: 8px; }
-      .retry-btn, .share-btn { padding: 0.6rem; font-size: 13px; }
+      .opt { font-size: 16px; padding: 12px 36px 12px 16px; }
+      .opt.selected { padding: 11px 35px 11px 15px; }
 
-      footer { font-size: 11px; padding: 0.75rem; }
+      .action-row { flex-direction: column; }
+
+      footer { font-size: 12px; }
     }
 
 </style>
@@ -161,7 +173,7 @@
 <div class="site">
   <!-- Home -->
   <div class="screen active" id="screen-home">
-    <img class="q-image" src="page%20images/Intro (1).png" alt="Welcome to Whimsy Swirls" />
+    <img class="q-image" src="page%20images/Intro (1).png" alt="" />
     <div class="hero-sub">The world's most magical froyo shop! Ordering a froyo should be simple right? Let's find out!</div>
     <button class="start-btn" onclick="startQuiz()">Start quiz &rarr;</button>
   </div>
@@ -170,7 +182,8 @@
   <div class="screen" id="screen-quiz">
     <div class="quiz-wrap">
       <div class="dots-row" id="q-dots"></div>
-      <div class="q-text" id="q-text"></div>
+      <div class="q-scene" id="q-scene"></div>
+      <div class="q-question" id="q-question"></div>
       <img class="q-image" id="q-image" src="" alt="" />
       <div id="q-options"></div>
       <button class="back-btn" id="back-btn" onclick="goBack()"><i class="ti ti-arrow-back-up"></i> Back</button>
@@ -210,9 +223,9 @@ const questions = [
       image: "page%20images/01.png",
       options: [
         { text: "Let's just pick something new!", scores: { doer: 2 } },
-        { text: "Already looked up the menu online.", scores: { planner: 2 } },
-        { text: "Immediately start weighing every flavour against every other.", scores: { thinker: 2 } },
-        { text: "Head straight for your usual flavour.", scores: { laser: 2 } }
+        { text: "Already looked up the menu online", scores: { planner: 2 } },
+        { text: "Immediately start weighing every flavour against every other", scores: { thinker: 2 } },
+        { text: "Head straight for your usual flavour", scores: { laser: 2 } }
       ]
     },
     {
@@ -220,20 +233,20 @@ const questions = [
       text: "You join the queue to order, only to find it's much longer than expected. What do you do?",
       image: "page%20images/02.png",
       options: [
-        { text: "No issue, you just go with the flow.", scores: { doer: 2 } },
-        { text: "You're not leaving this spot till you've got your froyo.", scores: { follow: 2 } },
-        { text: "Count the people ahead to estimate how long it'll take.", scores: { thinker: 2 } },
-        { text: "Checking the time every ten seconds.", scores: { storm: 2 } }
+        { text: "No issue, you just go with the flow", scores: { doer: 2 } },
+        { text: "You're not leaving this spot till you've got your froyo", scores: { follow: 2 } },
+        { text: "Count the people ahead to estimate how long it'll take", scores: { thinker: 2 } },
+        { text: "Checking the time every ten seconds", scores: { storm: 2 } }
       ]
     },
     {
       title: "",
-      text: "While waiting, you start daydreaming about creating your own flavour\u2026",
+      text: "While waiting, you start daydreaming about creating your own flavour",
       image: "page%20images/03.png",
       options: [
-        { text: "You'd lose track of time perfecting it.", scores: { laser: 2 } },
-        { text: "You'd spend ages researching the 'perfect' combo first before starting.", scores: { planner: 2 } },
-        { text: "You'd replay every flavour you've ever loved, weighing them all.", scores: { thinker: 2 } }
+        { text: "You'd lose track of time perfecting it", scores: { laser: 2 } },
+        { text: "You'd spend ages researching the 'perfect' combo first before starting", scores: { planner: 2 } },
+        { text: "You'd replay every flavour you've ever loved, weighing them all", scores: { thinker: 2 } }
       ]
     },
     {
@@ -241,20 +254,20 @@ const questions = [
       text: "All of a sudden, a mysterious red door at the side catches your eye.",
       image: "page%20images/04.png",
       options: [
-        { text: "Ask around before opening the door.", scores: { thinker: 1, planner: 1 } },
-        { text: "Just open and check it out.", scores: { doer: 2 } },
-        { text: "Stay in queue, ignoring the door.", scores: { follow: 2 } },
-        { text: "Feel a flicker of anxiety about what's behind it.", scores: { storm: 2 } }
+        { text: "Ask around before opening the door", scores: { thinker: 1, planner: 1 } },
+        { text: "Just open and check it out", scores: { doer: 2 } },
+        { text: "Stay in queue, ignoring the door", scores: { follow: 2 } },
+        { text: "Feel a flicker of anxiety about what's behind it", scores: { storm: 2 } }
       ]
     },
     {
       title: "",
-      text: "The red door pops open on its own to reveal a magical toppings station. You see 2 routes you can take\u2026",
+      text: "The red door pops open on its own to reveal a magical toppings station. You see 2 routes you can take",
       image: "page%20images/05.png",
       options: [
-        { text: "Route A - The Safe Bet, for familiar favourites.", scores: { planner: 2 } },
+        { text: "Route A - The Safe Bet, for familiar favourites", scores: { planner: 2 } },
         { text: "Route B - Mystery Toppings, surprise me!", scores: { doer: 2 } },
-        { text: "Frozen at the crossroads, can't decide.", scores: { thinker: 2 } }
+        { text: "Frozen at the crossroads, can't decide", scores: { thinker: 2 } }
       ]
     },
     {
@@ -262,10 +275,10 @@ const questions = [
       text: "Oh no, your favourite topping just ran out!",
       image: "page%20images/06.png",
       options: [
-        { text: "Pick another topping and keep moving.", scores: { follow: 2 } },
-        { text: "Feeling disappointed as it was your favourite.", scores: { storm: 2, laser: 2 } },
-        { text: "\u201cThat wasn't part of the plan\u2026\u201d but finds the closest substitute.", scores: { planner: 2 } },
-        { text: "Take so long weighing the alternatives that others move past you.", scores: { thinker: 2 } }
+        { text: "Pick another topping and keep moving", scores: { follow: 2 } },
+        { text: "Feeling disappointed as it was your favourite", scores: { storm: 2, laser: 2 } },
+        { text: "\u201cThat wasn't part of the plan\u2026\u201d but finds the closest substitute", scores: { planner: 2 } },
+        { text: "Take so long weighing the alternatives that others move past you", scores: { thinker: 2 } }
       ]
     },
     {
@@ -273,9 +286,9 @@ const questions = [
       text: "You accidentally spill some toppings.",
       image: "page%20images/07.png",
       options: [
-        { text: "Feel really guilty and embarrassed for making a mess.", scores: { storm: 2 } },
-        { text: "So locked in on getting this done, you don't even notice the spill.", scores: { laser: 2 } },
-        { text: "Clean it up and keep going.", scores: { follow: 2 } }
+        { text: "Feel really guilty and embarrassed for making a mess", scores: { storm: 2 } },
+        { text: "So locked in on getting this done, you don't even notice the spill", scores: { laser: 2 } },
+        { text: "Clean it up and keep going", scores: { follow: 2 } }
       ]
     },
     {
@@ -284,9 +297,9 @@ const questions = [
       image: "page%20images/08.png",
       options: [
         { text: "Nope, I'm happy with what I have!", scores: { follow: 2, laser: 2 } },
-        { text: "Yes! It sounds exciting.", scores: { storm: 1, doer: 1 } },
-        { text: "Ask fifteen follow-up questions about the drizzle before deciding.", scores: { thinker: 2 } },
-        { text: "Nope, surprises stress me out.", scores: { planner: 2 } }
+        { text: "Yes! It sounds exciting", scores: { storm: 1, doer: 1 } },
+        { text: "Ask fifteen follow-up questions about the drizzle before deciding", scores: { thinker: 2 } },
+        { text: "Nope, surprises stress me out", scores: { planner: 2 } }
       ]
     },
     {
@@ -294,10 +307,10 @@ const questions = [
       text: "After paying, you try to find a seat but the whole place is completely packed!",
       image: "page%20images/09.png",
       options: [
-        { text: "Feel overwhelmed and frustrated.", scores: { storm: 2 } },
-        { text: "Pick a spot and hover there till it clears.", scores: { laser: 2 } },
-        { text: "Give it 10 minutes for a seat, then move to plan B.", scores: { planner: 2 } },
-        { text: "Leave the store and walk home while eating.", scores: { follow: 1, doer: 1 } }
+        { text: "Feel overwhelmed and frustrated", scores: { storm: 2 } },
+        { text: "Pick a spot and hover there till it clears", scores: { laser: 2 } },
+        { text: "Give it 10 minutes for a seat, then move to plan B", scores: { planner: 2 } },
+        { text: "Leave the store and walk home while eating", scores: { follow: 1, doer: 1 } }
       ]
     },
     {
@@ -310,7 +323,7 @@ const questions = [
         { text: "Thinking through the perfect combo before ordering!", scores: { planner: 2 } },
         { text: "Finally getting to enjoy it makes it all worth it!", scores: { follow: 2 } },
         { text: "How happy eating it made me feel!", scores: { storm: 2 } },
-        { text: "Just tuning everything else out and focusing on my froyo.", scores: { laser: 2 } }
+        { text: "Just tuning everything else out and focusing on my froyo", scores: { laser: 2 } }
       ]
     }
   ];
@@ -374,6 +387,21 @@ const questions = [
 
   function startQuiz() { current = 0; resetScores(); history = []; renderQ(); show('screen-quiz'); }
 
+  // Splits a question into a secondary "scene" line and a primary "question"
+  // line, so the eye has an obvious entry point instead of one dense
+  // paragraph. If `title` is explicitly set, it's used as the scene and
+  // `text` as the question. Otherwise, when `text` contains multiple
+  // sentences, the last sentence becomes the question and everything
+  // before it becomes the scene. Single-sentence text has no scene line.
+  function splitScene(q) {
+    if (q.title) return { scene: q.title, question: q.text };
+    const sentences = q.text.split(/(?<=[.!?\u2026])\s+/).filter(Boolean);
+    if (sentences.length > 1) {
+      return { scene: sentences.slice(0, -1).join(' '), question: sentences[sentences.length - 1] };
+    }
+    return { scene: '', question: q.text };
+  }
+
   function renderQ() {
     const q = questions[current];
     const dots = document.getElementById('q-dots');
@@ -383,9 +411,12 @@ const questions = [
       d.className = 'dot' + (i < current ? ' done' : i === current ? ' active' : '');
       dots.appendChild(d);
     }
-    document.getElementById('q-text').textContent = q.title ? (q.title + ' ' + q.text) : q.text;
+    const { scene, question } = splitScene(q);
+    const sceneEl = document.getElementById('q-scene');
+    sceneEl.textContent = scene;
+    sceneEl.style.display = scene ? '' : 'none';
+    document.getElementById('q-question').textContent = question;
     document.getElementById('q-image').src = q.image;
-    document.getElementById('q-image').alt = q.text;
     const prevIdx = history[current];
     document.getElementById('q-options').innerHTML = q.options.map((o,i) =>
       `<button class="opt${prevIdx === i ? ' selected' : ''}" onclick="pick(${i})">${o.text}</button>`
@@ -426,11 +457,9 @@ const questions = [
       if (categoryPct(key) > categoryPct(winner)) winner = key;
     }
     lastWinner = winner;
-    const r = resultData[winner];
 
     const img = document.getElementById('result-image');
     img.src = flavourImages[winner];
-    img.alt = r.flavour;
     document.getElementById('share-toast').style.display = 'none';
 
     show('screen-result');
