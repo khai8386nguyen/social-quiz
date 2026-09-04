@@ -52,6 +52,11 @@
       font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     /* .start-btn:hover { background: #d9873e; }*/
+    .a11y-note {
+      max-width: 280px; margin-top: 16px;
+      font-size: 12px; font-weight: 400; color: #a08165;
+      text-align: center; line-height: 1.5;
+    }
 
     /* Quiz screen */
     .quiz-wrap { width: 100%; }
@@ -89,7 +94,7 @@
     .result-card-image {
       width: 100%; max-width: 300px; height: auto;
       aspect-ratio: 900 / 1600; object-fit: contain;
-      border-radius: 12px; margin: 0 auto; display: block;
+      border-radius: 12px; margin: 0 auto 24px; display: block;
       background: #f7e8d6;
     }
 
@@ -176,6 +181,7 @@
     <img class="q-image" src="page%20images/Intro (1).png" alt="" />
     <div class="hero-sub">The world's most magical froyo shop! Ordering a froyo should be simple right? Let's find out!</div>
     <button class="start-btn" onclick="startQuiz()">Start quiz &rarr;</button>
+    <div class="a11y-note">Designed to be easy to read — dyslexia, ADHD, low-vision, and reading-fatigue friendly.</div>
   </div>
 
   <!-- Quiz -->
