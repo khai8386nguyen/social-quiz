@@ -63,12 +63,6 @@
 
     /* Quiz screen */
     .quiz-wrap { width: 100%; }
-
-    /* Progress dots: legible by silhouette, not just color.
-       - upcoming: hollow outline circle
-       - done:     solid filled circle (brown)
-       - active:   stretched into a pill, "you are here" (orange)
-       Color remains a secondary reinforcement layer on top of the shape change. */
     .dots-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
     .dot {
       width: 10px; height: 10px; border-radius: 50%;
@@ -292,7 +286,7 @@ const questions = [
     },
     {
       title: "",
-      text: "All of a sudden, a mysterious red door at the side catches your eye.",
+      text: "All of a sudden, a mysterious red door at the side catches your eye",
       image: "page%20images/04.png",
       options: [
         { text: "Ask around before opening the door", scores: { thinker: 1, planner: 1 } },
@@ -303,7 +297,7 @@ const questions = [
     },
     {
       title: "",
-      text: "The red door pops open on its own to reveal a magical toppings station. You see 2 routes you can take",
+      text: "The red door pops open on its own to reveal a magical toppings station. You see 2 routes you can take:",
       image: "page%20images/05.png",
       options: [
         { text: "Route A: The Safe Bet - for familiar favourites", scores: { planner: 2 } },
@@ -324,7 +318,7 @@ const questions = [
     },
     {
       title: "",
-      text: "You accidentally spill some toppings.",
+      text: "You accidentally spill some toppings",
       image: "page%20images/07.png",
       options: [
         { text: "Feel really guilty and embarrassed for making a mess", scores: { storm: 2 } },
