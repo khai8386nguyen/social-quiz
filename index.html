@@ -181,7 +181,7 @@
     <img class="q-image" src="page%20images/Intro (1).png" alt="" />
     <div class="hero-sub">The world's most magical froyo shop! Ordering a froyo should be simple right? Let's find out!</div>
     <button class="start-btn" onclick="startQuiz()">Start quiz &rarr;</button>
-    <div class="a11y-note">Designed to be easy to read — dyslexia, ADHD, low-vision, and reading-fatigue friendly.</div>
+    <div class="a11y-note">Designed to be easy to read: dyslexia, ADHD, low-vision, and reading-fatigue friendly.</div>
   </div>
 
   <!-- Quiz -->
@@ -199,7 +199,7 @@
   <!-- Final transition -->
   <div class="screen" id="screen-final">
     <div class="hero-title">Your froyo is ready!</div>
-    <div class="hero-sub">A magical spoon glows; Every froyo tells a story. Let's see what yours says!;</div>
+    <div class="hero-sub">A magical spoon glows. Every froyo tells a story. Let's see what yours says!</div>
     <button class="start-btn" onclick="showResult()">Next &rarr;</button>
   </div>
 
@@ -230,7 +230,7 @@ const questions = [
       options: [
         { text: "Let's just pick something new!", scores: { doer: 2 } },
         { text: "Already looked up the menu online", scores: { planner: 2 } },
-        { text: "Immediately start weighing every flavour against every other", scores: { thinker: 2 } },
+        { text: "Immediately start weighing every flavour against each other", scores: { thinker: 2 } },
         { text: "Head straight for your usual flavour", scores: { laser: 2 } }
       ]
     },
@@ -239,10 +239,10 @@ const questions = [
       text: "You join the queue to order, only to find it's much longer than expected. What do you do?",
       image: "page%20images/02.png",
       options: [
-        { text: "No issue, you just go with the flow", scores: { doer: 2 } },
-        { text: "You're not leaving this spot till you've got your froyo", scores: { follow: 2 } },
+        { text: "Jump into whichever queue looks shortest", scores: { doer: 2 } },
+        { text: "Stay in the same queue no matter what", scores: { follow: 2 } },
         { text: "Count the people ahead to estimate how long it'll take", scores: { thinker: 2 } },
-        { text: "Checking the time every ten seconds", scores: { storm: 2 } }
+        { text: "Check the time every ten seconds", scores: { storm: 2 } }
       ]
     },
     {
@@ -250,9 +250,9 @@ const questions = [
       text: "While waiting, you start daydreaming about creating your own flavour",
       image: "page%20images/03.png",
       options: [
-        { text: "You'd lose track of time perfecting it", scores: { laser: 2 } },
-        { text: "You'd spend ages researching the 'perfect' combo first before starting", scores: { planner: 2 } },
-        { text: "You'd replay every flavour you've ever loved, weighing them all", scores: { thinker: 2 } }
+        { text: "Lose track of time creating the perfect flavour", scores: { laser: 2 } },
+        { text: "Spend ages researching the 'perfect' combo first before starting", scores: { planner: 2 } },
+        { text: "Think back to all the flavours you've enjoyed before.", scores: { thinker: 2 } }
       ]
     },
     {
@@ -261,9 +261,9 @@ const questions = [
       image: "page%20images/04.png",
       options: [
         { text: "Ask around before opening the door", scores: { thinker: 1, planner: 1 } },
-        { text: "Just open and check it out", scores: { doer: 2 } },
+        { text: "Just open and see for yourself", scores: { doer: 2 } },
         { text: "Stay in queue, ignoring the door", scores: { follow: 2 } },
-        { text: "Feel a flicker of anxiety about what's behind it", scores: { storm: 2 } }
+        { text: "\u201cI wonder what might be behind it\u201d", scores: { storm: 2 } }
       ]
     },
     {
@@ -271,9 +271,9 @@ const questions = [
       text: "The red door pops open on its own to reveal a magical toppings station. You see 2 routes you can take",
       image: "page%20images/05.png",
       options: [
-        { text: "Route A - The Safe Bet, for familiar favourites", scores: { planner: 2 } },
-        { text: "Route B - Mystery Toppings, surprise me!", scores: { doer: 2 } },
-        { text: "Frozen at the crossroads, can't decide", scores: { thinker: 2 } }
+        { text: "Route A: The Safe Bet - for familiar favourites", scores: { planner: 2 } },
+        { text: "Route B: Mystery Toppings - surprise me!", scores: { doer: 2 } },
+        { text: "Stuck at the crossroads, can't decide", scores: { thinker: 2 } }
       ]
     },
     {
@@ -304,8 +304,8 @@ const questions = [
       options: [
         { text: "Nope, I'm happy with what I have!", scores: { follow: 2, laser: 2 } },
         { text: "Yes! It sounds exciting", scores: { storm: 1, doer: 1 } },
-        { text: "Ask fifteen follow-up questions about the drizzle before deciding", scores: { thinker: 2 } },
-        { text: "Nope, surprises stress me out", scores: { planner: 2 } }
+        { text: "Ask follow-up questions about the drizzle before deciding", scores: { thinker: 2 } },
+        { text: "Nope, I don’t like surprises", scores: { planner: 2 } }
       ]
     },
     {
@@ -314,8 +314,8 @@ const questions = [
       image: "page%20images/09.png",
       options: [
         { text: "Feel overwhelmed and frustrated", scores: { storm: 2 } },
-        { text: "Pick a spot and hover there till it clears", scores: { laser: 2 } },
-        { text: "Give it 10 minutes for a seat, then move to plan B", scores: { planner: 2 } },
+        { text: "Pick a spot and hover there 'til it clears", scores: { laser: 2 } },
+        { text: "Give it 10 minutes for a seat, then head home if nothing clears up", scores: { planner: 2 } },
         { text: "Leave the store and walk home while eating", scores: { follow: 1, doer: 1 } }
       ]
     },
@@ -324,11 +324,11 @@ const questions = [
       text: "On your way out, the staff asks: \u201cWhat's the BEST part of your froyo journey today?\u201d",
       image: "page%20images/10.png",
       options: [
-        { text: "Being spontaneous and trying something new!", scores: { doer: 2 } },
-        { text: "Discovering what I like in my froyo!", scores: { thinker: 2 } },
-        { text: "Thinking through the perfect combo before ordering!", scores: { planner: 2 } },
-        { text: "Finally getting to enjoy it makes it all worth it!", scores: { follow: 2 } },
-        { text: "How happy eating it made me feel!", scores: { storm: 2 } },
+        { text: "Being spontaneous and trying something new", scores: { doer: 2 } },
+        { text: "Discovering what I like in my froyo", scores: { thinker: 2 } },
+        { text: "Thinking through the perfect combo before ordering", scores: { planner: 2 } },
+        { text: "Finally getting to enjoy it makes it all worth it", scores: { follow: 2 } },
+        { text: "How happy eating it made me feel", scores: { storm: 2 } },
         { text: "Just tuning everything else out and focusing on my froyo", scores: { laser: 2 } }
       ]
     }
@@ -357,11 +357,6 @@ const questions = [
     storm: "final_flavous/berry_bust.jpg"
   };
 
-  // The max number of points each category could possibly earn across the
-  // whole quiz (i.e. if every question's highest-scoring option for that
-  // category had been picked). Used to turn raw points into a percentage
-  // of "how much of this style you showed", so categories with fewer
-  // scoring opportunities aren't penalised against categories with more.
   function computeMaxScores() {
     const max = {};
     styleOrder.forEach(key => { max[key] = 0; });
@@ -393,12 +388,12 @@ const questions = [
 
   function startQuiz() { current = 0; resetScores(); history = []; renderQ(); show('screen-quiz'); }
 
-  // Splits a question into a secondary "scene" line and a primary "question"
-  // line, so the eye has an obvious entry point instead of one dense
-  // paragraph. If `title` is explicitly set, it's used as the scene and
-  // `text` as the question. Otherwise, when `text` contains multiple
-  // sentences, the last sentence becomes the question and everything
-  // before it becomes the scene. Single-sentence text has no scene line.
+  // Accessibility design fix:
+  // Splits a question into respectively 1) a secondary "scene" line and 2) a primary "question" line
+  // If `title` is explicitly set, it's used as the scene and `text` as the question.
+  // Otherwise, when `text` contains multiple sentences, the last sentence becomes the question and 
+  // everything before it becomes the scene. Single-sentence text has no scene line.
+  
   function splitScene(q) {
     if (q.title) return { scene: q.title, question: q.text };
     const sentences = q.text.split(/(?<=[.!?\u2026])\s+/).filter(Boolean);
@@ -490,7 +485,7 @@ const questions = [
   t.style.display = 'block';
   setTimeout(() => t.style.display = 'none', 2500);
 }
-
+  
 </script>
 </body>
 </html>
